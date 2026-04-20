@@ -1,0 +1,15 @@
+{
+  "key": "group_aetherfield_block_case_study",
+  "title": "Block: Case Study",
+  "fields": [
+    { "key": "field_case_image", "label": "Image", "name": "case_image", "type": "image", "return_format": "array", "preview_size": "medium" },
+    { "key": "field_case_title", "label": "Title", "name": "case_title", "type": "text", "default_value": "Why Acme Inc chose Aetherfield" },
+    { "key": "field_case_description", "label": "Description", "name": "case_description", "type": "textarea", "rows": 4, "default_value": "With fragmented data and growing reporting pressure, Acme turned to Aetherfield to streamline their ESG workflows. The result? Faster decisions, fewer spreadsheets, and 34% more coverage." },
+    { "key": "field_case_button", "label": "Button", "name": "case_button", "type": "link" }
+  ],
+  "location": [
+    [{ "param": "block", "operator": "==", "value": "acf/case-study" }]
+  ],
+  "active": true,
+  "show_in_rest": 0
+}

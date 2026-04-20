@@ -1,0 +1,15 @@
+{
+  "key": "group_aetherfield_block_testimonial",
+  "title": "Block: Testimonial",
+  "fields": [
+    { "key": "field_testimonial_image", "label": "Image", "name": "testimonial_image", "type": "image", "return_format": "array", "preview_size": "medium" },
+    { "key": "field_testimonial_quote", "label": "Quote", "name": "testimonial_quote", "type": "textarea", "rows": 4, "default_value": "We finally moved past spreadsheets and guesswork. Now we have real data to guide real decisions." },
+    { "key": "field_testimonial_name", "label": "Name", "name": "testimonial_name", "type": "text", "default_value": "Elliot Williams" },
+    { "key": "field_testimonial_role", "label": "Role", "name": "testimonial_role", "type": "text", "default_value": "Head of Sustainability, Flux Materials" }
+  ],
+  "location": [
+    [{ "param": "block", "operator": "==", "value": "acf/testimonial" }]
+  ],
+  "active": true,
+  "show_in_rest": 0
+}

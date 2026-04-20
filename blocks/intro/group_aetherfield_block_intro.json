@@ -1,0 +1,17 @@
+{
+  "key": "group_aetherfield_block_intro",
+  "title": "Block: Intro",
+  "fields": [
+    { "key": "field_intro_heading_1", "label": "Heading line 1", "name": "intro_heading_1", "type": "text", "default_value": "Sustainability insights," },
+    { "key": "field_intro_heading_2", "label": "Heading line 2", "name": "intro_heading_2", "type": "text", "default_value": "built for business" },
+    { "key": "field_intro_subheading", "label": "Subheading", "name": "intro_subheading", "type": "textarea", "rows": 3, "default_value": "Track impact, reduce emissions, and accelerate progress—with clarity and confidence." },
+    { "key": "field_intro_button_1", "label": "Primary button", "name": "intro_button_1", "type": "link" },
+    { "key": "field_intro_button_2", "label": "Secondary button", "name": "intro_button_2", "type": "link" },
+    { "key": "field_intro_image", "label": "Hero image", "name": "intro_image", "type": "image", "return_format": "array", "preview_size": "medium" }
+  ],
+  "location": [
+    [{ "param": "block", "operator": "==", "value": "acf/intro" }]
+  ],
+  "active": true,
+  "show_in_rest": 0
+}

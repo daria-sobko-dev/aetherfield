@@ -118,12 +118,23 @@ add_action( 'after_setup_theme', 'aetherfield_content_width', 0 );
  * Enqueue scripts and styles.
  */
 function aetherfield_scripts() {
+	wp_enqueue_style(
+		'aetherfield-fonts',
+		'https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Radio+Canada+Big:wght@400;500&family=Source+Serif+Pro:ital,wght@0,400;1,400&display=swap',
+		array(),
+		null
+	);
+
 	wp_enqueue_style( 'aetherfield-style', get_stylesheet_uri(), array(), _S_VERSION );
-	wp_style_add_data( 'aetherfield-style', 'rtl', 'replace' );
 
 	wp_enqueue_script( 'aetherfield-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 }
 add_action( 'wp_enqueue_scripts', 'aetherfield_scripts' );
+
+/**
+ * Register ACF blocks and related filters.
+ */
+require get_template_directory() . '/inc/blocks.php';
 
 /**
  * Custom template tags for this theme.

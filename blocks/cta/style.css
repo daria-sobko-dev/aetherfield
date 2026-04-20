@@ -1,0 +1,31 @@
+/* ==========================================================================
+   CTA block
+   ========================================================================== */
+.section--cta {
+	padding: 120px 20px;
+	background: var(--color-bg-2);
+	text-align: center;
+}
+
+.section--cta .section__inner {
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+	align-items: center;
+}
+
+.cta__title {
+	width: 100%;
+}
+
+@media (max-width: 1024px) {
+	.section--cta {
+		padding: 80px 20px;
+	}
+}
+
+@media (max-width: 768px) {
+	.section--cta {
+		padding: 40px 20px;
+	}
+}

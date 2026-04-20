@@ -1,0 +1,151 @@
+/* ==========================================================================
+   Intro block
+   ========================================================================== */
+.section--intro {
+	padding: 140px 20px 0;
+}
+
+.section--intro::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 808px;
+	background: var(--gradient-intro);
+	z-index: 0;
+	pointer-events: none;
+}
+
+.section--intro .section__inner {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 56px;
+}
+
+.intro__content {
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+	align-items: center;
+	width: 100%;
+	max-width: 1030px;
+	text-align: center;
+}
+
+.intro__header-text {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	align-items: center;
+	width: 100%;
+}
+
+.intro__heading {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.intro__heading .h-display-2 {
+	margin-top: -8px;
+}
+
+.intro__buttons {
+	display: flex;
+	gap: 16px;
+	align-items: center;
+}
+
+.intro__image {
+	width: 960px;
+	max-width: 100%;
+	height: 608px;
+	border: 2px solid #000;
+	border-radius: var(--radius-lg);
+	overflow: hidden;
+}
+
+.intro__image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+
+@media (max-width: 1024px) {
+	.section--intro::before {
+		height: 759px;
+	}
+
+	.section--intro {
+		padding: 140px 20px 0;
+	}
+
+	.section--intro .section__inner {
+		gap: 56px;
+	}
+
+	.intro__image {
+		width: 100%;
+		height: auto;
+		aspect-ratio: 760 / 481;
+		border-radius: 20px;
+	}
+}
+
+@media (max-width: 768px) {
+	.section--intro::before {
+		height: 536px;
+	}
+
+	.section--intro {
+		padding: 120px 20px 0;
+	}
+
+	.section--intro .section__inner {
+		gap: 32px;
+	}
+
+	.intro__content {
+		gap: 24px;
+	}
+
+	.intro__header-text {
+		gap: 12px;
+	}
+
+	.intro__heading .h-display-2 {
+		margin-top: 0;
+	}
+
+	.intro__subheading {
+		font-size: 18px;
+		letter-spacing: -0.54px;
+	}
+
+	.intro__buttons {
+		flex-direction: column;
+		align-items: center;
+		width: 100%;
+		max-width: 214px;
+		gap: 12px;
+	}
+
+	.intro__buttons .btn {
+		width: 100%;
+	}
+
+	.intro__buttons .btn:first-child {
+		width: 164px;
+	}
+
+	.intro__image {
+		aspect-ratio: 335 / 212;
+		height: auto;
+		border-radius: 12px;
+	}
+}

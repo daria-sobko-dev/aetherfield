@@ -1,0 +1,13 @@
+{
+  "key": "group_aetherfield_block_cta",
+  "title": "Block: CTA",
+  "fields": [
+    { "key": "field_cta_title", "label": "Title", "name": "cta_title", "type": "textarea", "rows": 2, "default_value": "Ready to operationalize your sustainability goals?" },
+    { "key": "field_cta_button", "label": "Button", "name": "cta_button", "type": "link" }
+  ],
+  "location": [
+    [{ "param": "block", "operator": "==", "value": "acf/cta" }]
+  ],
+  "active": true,
+  "show_in_rest": 0
+}

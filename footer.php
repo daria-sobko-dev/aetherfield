@@ -2,31 +2,34 @@
 /**
  * The template for displaying the footer
  *
- * Contains the closing of the #content div and all content after.
- *
- * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
- *
  * @package Aetherfield
  */
 
+$footer_image = get_template_directory_uri() . '/assets/images/footer.png';
+$footer_logo  = get_template_directory_uri() . '/assets/images/logo-big.svg';
 ?>
 
 	<footer id="colophon" class="site-footer">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'aetherfield' ) ); ?>">
-				<?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'aetherfield' ), 'WordPress' );
-				?>
-			</a>
-			<span class="sep"> | </span>
-				<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'aetherfield' ), 'aetherfield', '<a href="http://underscores.me/">Underscores.me</a>' );
-				?>
-		</div><!-- .site-info -->
-	</footer><!-- #colophon -->
-</div><!-- #page -->
+		<div class="footer__top">
+			<ul class="footer__links">
+				<li><a href="#"><?= esc_html__( 'Product', 'aetherfield' ) ?></a></li>
+				<li><a href="#"><?= esc_html__( 'Journal', 'aetherfield' ) ?></a></li>
+				<li><a href="#"><?= esc_html__( 'About', 'aetherfield' ) ?></a></li>
+				<li><a href="#"><?= esc_html__( 'Careers', 'aetherfield' ) ?></a></li>
+				<li><a href="#"><?= esc_html__( 'Get started', 'aetherfield' ) ?></a></li>
+			</ul>
+			<p class="footer__copy"><?= esc_html( sprintf( __( '© %d  ·  All rights reserved', 'aetherfield' ), (int) date( 'Y' ) ) ) ?></p>
+		</div>
+
+		<div class="footer__image" aria-hidden="true">
+			<img src="<?= esc_url( $footer_image ) ?>" alt="">
+		</div>
+
+		<div class="footer__logo" aria-label="<?= esc_attr( get_bloginfo( 'name' ) ) ?>">
+			<img src="<?= esc_url( $footer_logo ) ?>" alt="<?= esc_attr( get_bloginfo( 'name' ) ) ?>">
+		</div>
+	</footer>
+</div>
 
 <?php wp_footer(); ?>
 

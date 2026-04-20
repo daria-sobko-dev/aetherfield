@@ -218,6 +218,102 @@ Do not follow existing legacy patterns if they violate these rules.
 
 ---
 
+# SECTION STRUCTURE PATTERN (MANDATORY)
+
+All new page templates and new sections MUST follow the container pattern established in `page-home.php`.
+This applies to every page template (`page-*.php`, `page-home.php`, `single-*.php`, `archive-*.php`) and every new section added to an existing page.
+
+## Required HTML structure
+
+Every top-level section MUST use this three-level container pattern:
+
+```php
+<section class="section section--{name}" aria-labelledby="{name}-title">
+    <div class="section__inner">
+        <!-- section content goes here -->
+        <div class="section__content {name}__content">
+            ...
+        </div>
+    </div>
+</section>
+```
+
+Responsibilities per level:
+
+- `.section` — outer wrapper. Owns: horizontal edge padding (default `20px`), vertical padding, full-width backgrounds, absolute-positioned pseudo-elements (gradients, bg images), `position: relative`, `overflow: hidden` when needed.
+- `.section--{name}` — modifier class for section-specific overrides (padding, background, positioning, `::before` decorations).
+- `.section__inner` — content container. Owns: `width: 100%`, `max-width`, `margin: 0 auto`. Default max-width is `var(--container-max)` (1500px). Override per section when Figma specifies a narrower width.
+- `.section__content` — OPTIONAL inner layout block. Use only when the section has an internal flex/grid content area (multi-column, card rows). Skip when `.section__inner` holds simple stacked blocks.
+- `.{name}__*` — BEM sub-elements for section-specific pieces (`.intro__heading`, `.features__image`, `.journal-item__info`, etc.).
+
+## Per-section max-width overrides
+
+Override on `.section--{name} .section__inner { max-width: ... }` — NEVER on child content blocks.
+
+Established widths in the current codebase (match Figma):
+
+| Section | max-width |
+|---------|-----------|
+| `section--case-study` | 980px |
+| `section--blog` | 620px |
+| All other sections | 1500px (default via `--container-max`) |
+
+If a section has two inner blocks with different widths (like `section--intro` with text `max-width: 1030px` and image `width: 960px`), keep `.section__inner` at the default max-width and apply the specific widths on the individual child blocks (`.intro__content`, `.intro__image`).
+
+## Base CSS (already defined in `style.css`)
+
+```css
+.section {
+    position: relative;
+    padding: 0 20px;
+}
+
+.section__inner {
+    width: 100%;
+    max-width: var(--container-max);
+    margin: 0 auto;
+}
+```
+
+Do NOT redefine these base rules. Only add section-specific modifiers (`.section--{name}` and `.section--{name} .section__inner`).
+
+## Rules
+
+1. NEVER place content directly inside `<section>` without wrapping it in `.section__inner`. The inner container is mandatory — even for single-element sections.
+2. NEVER set `max-width` on arbitrary content blocks to cap section width — always go through `.section__inner`.
+3. NEVER set horizontal page padding on inner blocks — it belongs on `.section` (or its `.section--{name}` override).
+4. Full-width backgrounds belong on `.section--{name}` (so they extend edge-to-edge), never on `.section__inner`.
+5. If a section needs a decorative gradient, background image, or overlay, use `::before`/`::after` on `.section--{name}` OR an absolutely-positioned child inside `.section` (as `section--values` does with `.values__bg`).
+6. Always pair section modifier with base class: `class="section section--{name}"`. Never use `section--{name}` alone.
+7. Section BEM names use kebab-case: `section--case-study`, `section--cta`, `section--features`.
+
+## Responsive overrides
+
+Section padding and inner gap overrides for tablet / mobile live inside the existing `@media` blocks in `style.css`. Target them via the modifier:
+
+```css
+@media (max-width: 1024px) {
+    .section--features { padding: 80px 20px; }
+    .section--features .section__inner { gap: 40px; }
+}
+```
+
+Never introduce new `@media` blocks — use the existing Tablet (≤1024px) and Mobile (≤768px) blocks.
+
+## STRICTLY FORBIDDEN
+
+- Do NOT use a flat section structure (`<section class="foo"> ... </section>` with no `.section__inner` wrapper).
+- Do NOT introduce new generic container classes (`.container`, `.wrapper`, `.row`, `.inner`). Reuse `.section__inner`.
+- Do NOT inline `max-width` on random children to cap content width — always on `.section__inner`.
+- Do NOT merge responsibilities: outer padding belongs on `.section`, max-width on `.section__inner`, internal layout on `.section__content` or section-specific sub-elements.
+- Do NOT create a new max-width value without confirming it against Figma.
+
+## Reference implementation
+
+`page-home.php` + `style.css` contain the canonical implementation across 7 sections: `intro`, `features`, `values`, `case-study`, `blog`, `testimonial`, `cta`. When in doubt, copy the pattern from there exactly.
+
+---
+
 # MENTAL MODEL
 
 You are extending a production codebase.

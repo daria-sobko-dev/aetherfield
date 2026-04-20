@@ -1,0 +1,27 @@
+{
+  "key": "group_aetherfield_block_features",
+  "title": "Block: Features",
+  "fields": [
+    { "key": "field_features_title", "label": "Section title", "name": "features_title", "type": "textarea", "rows": 2, "default_value": "Everything you need to measure, model, and act on sustainability" },
+    { "key": "field_features_image", "label": "Image", "name": "features_image", "type": "image", "return_format": "array", "preview_size": "medium" },
+    {
+      "key": "field_features_items",
+      "label": "Feature items",
+      "name": "features_items",
+      "type": "repeater",
+      "layout": "block",
+      "button_label": "Add feature",
+      "sub_fields": [
+        { "key": "field_features_item_title", "label": "Title", "name": "title", "type": "text" },
+        { "key": "field_features_item_number", "label": "Number", "name": "number", "type": "text" },
+        { "key": "field_features_item_description", "label": "Description", "name": "description", "type": "textarea", "rows": 2 }
+      ]
+    },
+    { "key": "field_features_button", "label": "Button", "name": "features_button", "type": "link" }
+  ],
+  "location": [
+    [{ "param": "block", "operator": "==", "value": "acf/features" }]
+  ],
+  "active": true,
+  "show_in_rest": 0
+}

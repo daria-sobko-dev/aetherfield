@@ -2,13 +2,12 @@
 /**
  * The header for our theme
  *
- * This is the template that displays all of the <head> section and everything up until <div id="content">
- *
- * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
- *
  * @package Aetherfield
  */
 
+$logo_url = get_template_directory_uri() . '/assets/images/logo.svg';
+$arrow_url = get_template_directory_uri() . '/assets/images/arrow.svg';
+$menu_icon_url = get_template_directory_uri() . '/assets/images/menu-icon.svg';
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
@@ -16,44 +15,37 @@
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
-
 	<?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 <div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'aetherfield' ); ?></a>
+	<a class="skip-link screen-reader-text" href="#primary"><?= esc_html__( 'Skip to content', 'aetherfield' ) ?></a>
 
 	<header id="masthead" class="site-header">
-		<div class="site-branding">
-			<?php
-			the_custom_logo();
-			if ( is_front_page() && is_home() ) :
-				?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-				<?php
-			else :
-				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-				<?php
-			endif;
-			$aetherfield_description = get_bloginfo( 'description', 'display' );
-			if ( $aetherfield_description || is_customize_preview() ) :
-				?>
-				<p class="site-description"><?php echo $aetherfield_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
-			<?php endif; ?>
-		</div><!-- .site-branding -->
+		<nav class="nav" aria-label="<?= esc_attr__( 'Primary', 'aetherfield' ) ?>">
+			<div class="nav__inner">
+				<a class="nav__logo" href="<?= esc_url( home_url( '/' ) ) ?>" aria-label="<?= esc_attr( get_bloginfo( 'name' ) ) ?>">
+					<img src="<?= esc_url( $logo_url ) ?>" alt="<?= esc_attr( get_bloginfo( 'name' ) ) ?>">
+				</a>
 
-		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'aetherfield' ); ?></button>
-			<?php
-			wp_nav_menu(
-				array(
-					'theme_location' => 'menu-1',
-					'menu_id'        => 'primary-menu',
-				)
-			);
-			?>
-		</nav><!-- #site-navigation -->
-	</header><!-- #masthead -->
+				<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="<?= esc_attr__( 'Toggle menu', 'aetherfield' ) ?>">
+					<img src="<?= esc_url( $menu_icon_url ) ?>" alt="" aria-hidden="true">
+				</button>
+
+				<ul id="nav-menu" class="nav__menu">
+					<li><a href="#"><?= esc_html__( 'Product', 'aetherfield' ) ?></a></li>
+					<li><a href="#"><?= esc_html__( 'Journal', 'aetherfield' ) ?></a></li>
+					<li><a href="#"><?= esc_html__( 'About', 'aetherfield' ) ?></a></li>
+					<li><a href="#"><?= esc_html__( 'Careers', 'aetherfield' ) ?></a></li>
+					<li>
+						<a class="nav__cta" href="#">
+							<span><?= esc_html__( 'Get started', 'aetherfield' ) ?></span>
+							<img src="<?= esc_url( $arrow_url ) ?>" alt="" aria-hidden="true">
+						</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</header>

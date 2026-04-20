@@ -1,0 +1,27 @@
+{
+  "key": "group_aetherfield_block_values",
+  "title": "Block: Values",
+  "fields": [
+    { "key": "field_values_bg", "label": "Background image", "name": "values_bg", "type": "image", "return_format": "array", "preview_size": "medium" },
+    { "key": "field_values_heading_1", "label": "Heading line 1", "name": "values_heading_1", "type": "text", "default_value": "Built for clarity" },
+    { "key": "field_values_heading_2", "label": "Heading line 2", "name": "values_heading_2", "type": "text", "default_value": "Designed for action" },
+    {
+      "key": "field_values_items",
+      "label": "Value cards",
+      "name": "values_items",
+      "type": "repeater",
+      "layout": "block",
+      "button_label": "Add value",
+      "sub_fields": [
+        { "key": "field_values_item_icon", "label": "Icon (SVG)", "name": "icon", "type": "image", "return_format": "array", "mime_types": "svg", "preview_size": "thumbnail" },
+        { "key": "field_values_item_title", "label": "Title", "name": "title", "type": "text" },
+        { "key": "field_values_item_description", "label": "Description", "name": "description", "type": "textarea", "rows": 3 }
+      ]
+    }
+  ],
+  "location": [
+    [{ "param": "block", "operator": "==", "value": "acf/values" }]
+  ],
+  "active": true,
+  "show_in_rest": 0
+}
