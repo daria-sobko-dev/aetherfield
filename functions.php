@@ -132,6 +132,11 @@ function aetherfield_scripts() {
 add_action( 'wp_enqueue_scripts', 'aetherfield_scripts' );
 
 /**
+ * Register custom post types and taxonomies.
+ */
+require get_template_directory() . '/inc/cpt.php';
+
+/**
  * Register ACF blocks and related filters.
  */
 require get_template_directory() . '/inc/blocks.php';
