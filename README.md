@@ -1,70 +1,149 @@
-[![Build Status](https://travis-ci.org/Automattic/_s.svg?branch=master)](https://travis-ci.org/Automattic/_s)
+# Aetherfield WordPress Theme
 
-_s
-===
+Custom WordPress theme for the Aetherfield marketing site — sustainability insights software.
+Based on the Figma design, implemented with ACF Blocks architecture.
 
-Hi. I'm a starter theme called `_s`, or `underscores`, if you like. I'm a theme meant for hacking so don't use me as a Parent Theme. Instead try turning me into the next, most awesome, WordPress theme out there. That's what I'm here for.
+---
 
-My ultra-minimal CSS might make me look like theme tartare but that means less stuff to get in your way when you're designing your awesome theme. Here are some of the other more interesting things you'll find here:
+## Project status
 
-* A modern workflow with a pre-made command-line interface to turn your project into a more pleasant experience.
-* A just right amount of lean, well-commented, modern, HTML5 templates.
-* A custom header implementation in `inc/custom-header.php`. Just add the code snippet found in the comments of `inc/custom-header.php` to your `header.php` template.
-* Custom template tags in `inc/template-tags.php` that keep your templates clean and neat and prevent code duplication.
-* Some small tweaks in `inc/template-functions.php` that can improve your theming experience.
-* A script at `js/navigation.js` that makes your menu a toggled dropdown on small screens (like your phone), ready for CSS artistry. It's enqueued in `functions.php`.
-* 2 sample layouts in `sass/layouts/` made using CSS Grid for a sidebar on either side of your content. Just uncomment the layout of your choice in `sass/style.scss`.
-Note: `.no-sidebar` styles are automatically loaded.
-* Smartly organized starter CSS in `style.css` that will help you to quickly get your design off the ground.
-* Full support for `WooCommerce plugin` integration with hooks in `inc/woocommerce.php`, styling override woocommerce.css with product gallery features (zoom, swipe, lightbox) enabled.
-* Licensed under GPLv2 or later. :) Use it to make something cool.
+**Current stage:** Home page complete. Migrating to multi-page site with CPT for Journal, Case Studies, and additional marketing pages.
 
-Installation
----------------
+### ✅ Done
+- Global theme scaffolding (header, footer, navigation, typography tokens)
+- Home page converted to ACF Blocks architecture (7 blocks)
+- Responsive: Desktop (≥1025px), Tablet (769–1024px), Mobile (≤768px)
+- Per-block CSS split with conditional enqueue (assets load only when block is on page)
+- Block-scoped assets (sticker, quote icons live inside their blocks)
+- Mobile burger menu with full-screen overlay
+- Gutenberg Block Editor replaces Classic Editor for Home template
 
-### Requirements
+### 🟡 In progress
+- Footer content editability via ACF (still hardcoded)
+- SVG uploads via Safe SVG plugin
 
-`_s` requires the following dependencies:
+### 📋 Planned
+- CPT: `journal` (blog posts) — single + archive templates
+- CPT: `case_study` — single + archive templates
+- Cross-page reusable ACF Blocks (Testimonial, CTA on single pages)
+- Additional pages: About, Careers, Services
+- Template parts for CPT cards (`journal-card.php`, `case-card.php`)
 
-- [Node.js](https://nodejs.org/)
-- [Composer](https://getcomposer.org/)
+---
 
-### Quick Start
+## Architecture
 
-Clone or download this repository, change its name to something else (like, say, `megatherium-is-awesome`), and then you'll need to do a six-step find and replace on the name in all the templates.
+### Block-based layout
+Each page section is a self-contained ACF Block. The template (`page-home.php`) is a thin wrapper around `the_content()` — section order and composition is controlled in the Gutenberg editor.
 
-1. Search for `'_s'` (inside single quotations) to capture the text domain and replace with: `'megatherium-is-awesome'`.
-2. Search for `_s_` to capture all the functions names and replace with: `megatherium_is_awesome_`.
-3. Search for `Text Domain: _s` in `style.css` and replace with: `Text Domain: megatherium-is-awesome`.
-4. Search for <code>&nbsp;_s</code> (with a space before it) to capture DocBlocks and replace with: <code>&nbsp;Megatherium_is_Awesome</code>.
-5. Search for `_s-` to capture prefixed handles and replace with: `megatherium-is-awesome-`.
-6. Search for `_S_` (in uppercase) to capture constants and replace with: `MEGATHERIUM_IS_AWESOME_`.
-
-Then, update the stylesheet header in `style.css`, the links in `footer.php` with your own information and rename `_s.pot` from `languages` folder to use the theme's slug. Next, update or delete this readme.
-
-### Setup
-
-To start using all the tools that come with `_s`  you need to install the necessary Node.js and Composer dependencies :
-
-```sh
-$ composer install
-$ npm install
+Blocks live in `/blocks/{name}/`:
+```
+blocks/intro/
+├── render.php                         ← PHP template
+├── style.css                          ← block-scoped CSS (auto-enqueued when block is on page)
+├── group_aetherfield_block_intro.json ← ACF field group
+└── (optional: view.js, preview.png, icon.svg, block-specific SVGs)
 ```
 
-### Available CLI commands
+Blocks are registered in `inc/blocks.php` via `acf_register_block_type()`.
+Available on Home template only — filtered through `allowed_block_types_all`.
 
-`_s` comes packed with CLI commands tailored for WordPress theme development :
+### File structure
+```
+aetherfield/
+├── acf-json/                          ← ACF field group JSON auto-save
+├── assets/
+│   └── images/                        ← global UI assets (logo, footer image, nav icons)
+├── blocks/                            ← 7 ACF Blocks (each self-contained)
+│   ├── intro/
+│   ├── features/
+│   ├── values/
+│   ├── case-study/
+│   ├── blog/
+│   ├── testimonial/
+│   └── cta/
+├── inc/
+│   ├── blocks.php                     ← register all ACF Blocks + allowed block types
+│   ├── template-functions.php
+│   └── template-tags.php
+├── js/
+│   └── navigation.js                  ← global JS (mobile nav toggle)
+├── languages/
+├── header.php
+├── footer.php
+├── page-home.php                      ← Template Name: Home
+├── page.php / single.php / archive.php
+├── functions.php
+├── style.css                          ← global CSS (reset, tokens, typography, layout, nav, footer)
+└── CLAUDE.md                          ← project rules & constraints
+```
 
-- `composer lint:wpcs` : checks all PHP files against [PHP Coding Standards](https://developer.wordpress.org/coding-standards/wordpress-coding-standards/php/).
-- `composer lint:php` : checks all PHP files for syntax errors.
-- `composer make-pot` : generates a .pot file in the `languages/` directory.
-- `npm run compile:css` : compiles SASS files to css.
-- `npm run compile:rtl` : generates an RTL stylesheet.
-- `npm run watch` : watches all SASS files and recompiles them to css when they change.
-- `npm run lint:scss` : checks all SASS files against [CSS Coding Standards](https://developer.wordpress.org/coding-standards/wordpress-coding-standards/css/).
-- `npm run lint:js` : checks all JavaScript files against [JavaScript Coding Standards](https://developer.wordpress.org/coding-standards/wordpress-coding-standards/javascript/).
-- `npm run bundle` : generates a .zip archive for distribution, excluding development and system files.
+### Styling
+- **Global `style.css`:** reset, design tokens (CSS variables), typography classes (`h-display-1/2`, `h-section`, `h-card`, `p-lg`), layout primitives (`.section`, `.section__inner`), buttons, navigation, footer.
+- **Per-block `blocks/{name}/style.css`:** section-specific layout and decoration. Auto-enqueued only on pages where the block is present.
+- **BEM naming** throughout. Responsive via `@media (max-width: 1024px)` (tablet) and `@media (max-width: 768px)` (mobile).
 
-Now you're ready to go! The next step is easy to say, but harder to do: make an awesome WordPress theme. :)
+### Content
+All content (text, images, button links, repeater items) is managed through ACF Pro fields per block:
+- Text / textarea fields for copy
+- Image fields (return as array with `url` + `alt`)
+- Link fields (return as array with `url` + `title` + `target`)
+- Repeaters for list items (features, value cards, journal items)
 
-Good luck!
+---
+
+## Requirements
+
+- WordPress ≥ 6.0
+- PHP ≥ 7.4
+- **ACF Pro ≥ 5.8** (required for Blocks, Link field, Repeater)
+- **Safe SVG plugin** (for SVG uploads via Media Library)
+
+---
+
+## Fonts
+
+Google Fonts loaded via `functions.php`:
+- **Source Serif Pro** — serif display + body
+- **Radio Canada Big** — sans display
+- **Geist Mono** — mono (buttons, captions)
+
+---
+
+## Setup
+
+1. Clone into `wp-content/themes/aetherfield/`
+2. Activate theme in WP admin
+3. Install and activate **ACF Pro** and **Safe SVG** plugins
+4. **Custom Fields → Field Groups → Sync** — sync the 7 "Block: ..." field groups from local JSON
+5. **Pages → Add New** → Title "Home" → Page Attributes → Template: **Home** → Publish
+6. In the Gutenberg editor, add blocks from the **Aetherfield** category:
+   Intro → Features → Values → Case Study → Blog → Testimonial → Call to action
+7. Fill ACF fields in each block (see `CLAUDE.md` for default content)
+8. **Settings → Reading** → Homepage displays: A static page → Homepage: Home
+9. Upload images via Media Library and assign them in the block fields
+
+---
+
+## Conventions
+
+See [`CLAUDE.md`](./CLAUDE.md) for full project rules, including:
+- Pixel-perfect Figma 1:1 implementation
+- BEM + section container pattern
+- Responsive breakpoints (no custom media queries beyond tablet/mobile)
+- Asset 2x rule for raster images, SVG for icons
+- PHP short echo tags, curly braces only (no alternative syntax)
+- Modern ES6+ JS, no `var`
+- Accessibility (keyboard nav, focus styles, semantic HTML)
+
+---
+
+## Figma source
+
+Design file: https://www.figma.com/design/cm5AicB7DZeK4zuLOOud0G
+
+---
+
+## License
+
+GPLv2 or later.
