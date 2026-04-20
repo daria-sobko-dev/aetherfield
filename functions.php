@@ -143,6 +143,15 @@ function aetherfield_scripts() {
 			_S_VERSION
 		);
 	}
+
+	if ( is_singular( 'blog' ) ) {
+		wp_enqueue_style(
+			'aetherfield-single-blog',
+			get_template_directory_uri() . '/assets/css/single-blog.css',
+			array(),
+			_S_VERSION
+		);
+	}
 }
 add_action( 'wp_enqueue_scripts', 'aetherfield_scripts' );
 

@@ -1,0 +1,385 @@
+/* ==========================================================================
+   Single Blog post
+   ========================================================================== */
+
+/* Article header (meta + title, centered) */
+.section--article-header {
+	padding: 140px 20px 40px;
+}
+
+.article-header__inner {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	align-items: center;
+	text-align: center;
+	max-width: 1030px;
+}
+
+.article-header__meta {
+	display: flex;
+	gap: 8px;
+	font-family: var(--font-serif);
+	font-size: 20px;
+	line-height: 1.2;
+	letter-spacing: -0.8px;
+	color: var(--color-subtle);
+}
+
+.article-header__title {
+	width: 100%;
+}
+
+/* Hero image */
+.section--article-hero {
+	padding: 0 20px;
+}
+
+.article-hero__image {
+	width: 100%;
+	aspect-ratio: 1240 / 500;
+	overflow: hidden;
+}
+
+.article-hero__image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+/* Introduction text — 2-col: meta sidebar + intro paragraph */
+.section--article-intro {
+	padding: 80px 20px 0;
+}
+
+.article-intro__inner {
+	display: grid;
+	grid-template-columns: 200px 740px;
+	gap: 140px;
+	justify-content: center;
+	max-width: none;
+	width: 100%;
+}
+
+.article-intro__meta {
+	display: flex;
+	flex-direction: column;
+	gap: 40px;
+}
+
+.article-meta-block {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	font-size: 20px;
+}
+
+.article-meta-block__label {
+	font-family: var(--font-serif);
+	line-height: 1.2;
+	letter-spacing: -0.8px;
+	color: var(--color-subtle);
+}
+
+.article-meta-block__value {
+	font-family: var(--font-display);
+	font-weight: 400;
+	line-height: 1;
+	letter-spacing: -0.4px;
+	color: #000;
+}
+
+.article-intro__content {
+	display: flex;
+	flex-direction: column;
+	gap: 40px;
+}
+
+.article-intro__text {
+	color: #000;
+}
+
+.article-intro__divider {
+	width: 100%;
+	height: 1px;
+	background: var(--color-divider);
+}
+
+/* Article body — long-form content, 740px column */
+.section--article-body {
+	padding: 40px 20px 0;
+}
+
+.article-body__inner {
+	max-width: 740px;
+	margin: 0 auto;
+}
+
+.article-body {
+	font-family: var(--font-serif);
+	font-size: 20px;
+	line-height: 1.4;
+	letter-spacing: -0.4px;
+	color: #000;
+}
+
+.article-body > * + * {
+	margin-top: 28px;
+}
+
+.article-body > h2 + *,
+.article-body > h3 + * {
+	margin-top: 20px;
+}
+
+.article-body > * + h2,
+.article-body > * + h3 {
+	margin-top: 40px;
+}
+
+.article-body h2,
+.article-body h3 {
+	font-family: var(--font-display);
+	font-weight: 500;
+	font-size: 20px;
+	line-height: 1;
+	letter-spacing: -0.4px;
+	color: #000;
+}
+
+.article-body p {
+	margin: 0;
+}
+
+.article-body ul,
+.article-body ol {
+	margin: 0;
+	padding-left: 1.25em;
+}
+
+.article-body ul {
+	list-style: disc;
+}
+
+.article-body ol {
+	list-style: decimal;
+}
+
+.article-body li + li {
+	margin-top: 12px;
+}
+
+.article-body a {
+	text-decoration: underline;
+}
+
+.article-body img {
+	width: 100%;
+	height: auto;
+	margin-top: 40px;
+	margin-bottom: 40px;
+}
+
+.article-body blockquote {
+	padding-left: 24px;
+	border-left: 2px solid var(--color-divider);
+	font-style: italic;
+}
+
+/* Related articles */
+.section--related {
+	padding: 120px 20px 120px;
+}
+
+.related__inner {
+	display: flex;
+	flex-direction: column;
+	gap: 76px;
+}
+
+.related__header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
+}
+
+.related__title {
+	flex: 1 0 0;
+}
+
+.related__link {
+	font-family: var(--font-serif);
+	font-size: 20px;
+	line-height: 1.2;
+	letter-spacing: -0.8px;
+	color: #000;
+}
+
+.related__link:hover {
+	opacity: 0.7;
+}
+
+.related__grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 16px;
+}
+
+/* ==========================================================================
+   Blog card — base + variants used on single-blog
+   ========================================================================== */
+.blog-card__link {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	color: inherit;
+}
+
+.blog-card__image {
+	width: 100%;
+	aspect-ratio: 612 / 356;
+	overflow: hidden;
+}
+
+.blog-card__image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.blog-card__text {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+	width: 100%;
+}
+
+.blog-card__header {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	line-height: 1;
+}
+
+.blog-card__details {
+	display: flex;
+	gap: 8px;
+	font-family: var(--font-mono);
+	font-size: 14px;
+	color: var(--color-subtle);
+}
+
+.blog-card__excerpt {
+	color: #000;
+}
+
+/* ==========================================================================
+   Tablet
+   ========================================================================== */
+@media (max-width: 1024px) {
+	.section--article-header {
+		padding: 140px 20px 40px;
+	}
+
+	.article-intro__inner {
+		grid-template-columns: 640px;
+		justify-content: center;
+		gap: 16px;
+	}
+
+	.article-intro__meta {
+		flex-direction: row;
+		gap: 80px;
+	}
+
+	.section--article-body {
+		padding: 40px 20px 0;
+	}
+
+	.article-body__inner {
+		max-width: 640px;
+	}
+
+	.section--related {
+		padding: 80px 20px 80px;
+	}
+
+	.related__inner {
+		gap: 52px;
+	}
+
+	.related__grid {
+		grid-template-columns: 1fr;
+		gap: 40px;
+	}
+}
+
+/* ==========================================================================
+   Mobile
+   ========================================================================== */
+@media (max-width: 768px) {
+	.section--article-header {
+		padding: 120px 20px 40px;
+	}
+
+	.article-header__meta {
+		font-size: 18px;
+		letter-spacing: -0.54px;
+	}
+
+	.section--article-intro {
+		padding: 40px 20px 0;
+	}
+
+	.article-intro__inner {
+		grid-template-columns: 1fr;
+		gap: 16px;
+	}
+
+	.article-intro__meta {
+		flex-direction: row;
+		gap: 40px;
+	}
+
+	.article-meta-block {
+		font-size: 18px;
+	}
+
+	.article-meta-block__label {
+		letter-spacing: -0.54px;
+	}
+
+	.article-meta-block__value {
+		letter-spacing: -0.36px;
+	}
+
+	.article-intro__content {
+		gap: 32px;
+	}
+
+	.article-body {
+		font-size: 18px;
+		letter-spacing: -0.36px;
+	}
+
+	.article-body h2,
+	.article-body h3 {
+		font-size: 18px;
+		letter-spacing: -0.36px;
+	}
+
+	.section--related {
+		padding: 40px 20px 40px;
+	}
+
+	.related__inner {
+		gap: 24px;
+	}
+
+	.related__header {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 16px;
+	}
+}
