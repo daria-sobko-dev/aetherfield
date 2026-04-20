@@ -28,10 +28,11 @@ $blog_query = new WP_Query( array(
 					<?php while ( $blog_query->have_posts() ) {
 						$blog_query->the_post();
 
+						$hero         = get_field( 'hero_image' );
 						$thumb_id     = get_post_thumbnail_id();
-						$thumb_url    = $thumb_id ? wp_get_attachment_image_url( $thumb_id, 'medium' ) : '';
-						$thumb_alt    = $thumb_id ? get_post_meta( $thumb_id, '_wp_attachment_image_alt', true ) : '';
-						$reading_time = get_field( 'reading_time' );
+						$thumb_url    = ! empty( $hero['url'] ) ? $hero['url'] : ( $thumb_id ? wp_get_attachment_image_url( $thumb_id, 'medium' ) : '' );
+						$thumb_alt    = ! empty( $hero['alt'] ) ? $hero['alt'] : ( $thumb_id ? get_post_meta( $thumb_id, '_wp_attachment_image_alt', true ) : '' );
+						$reading_time = aetherfield_reading_time();
 						$topics       = get_the_terms( get_the_ID(), 'blog_topic' );
 						$topic        = ( ! is_wp_error( $topics ) && ! empty( $topics ) ) ? $topics[0]->name : '';
 						?>

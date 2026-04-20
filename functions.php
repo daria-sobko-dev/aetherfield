@@ -156,6 +156,11 @@ function aetherfield_scripts() {
 add_action( 'wp_enqueue_scripts', 'aetherfield_scripts' );
 
 /**
+ * Theme helper functions.
+ */
+require get_template_directory() . '/inc/helpers.php';
+
+/**
  * Register custom post types and taxonomies.
  */
 require get_template_directory() . '/inc/cpt.php';

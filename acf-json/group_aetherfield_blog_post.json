@@ -4,7 +4,7 @@
   "fields": [
     { "key": "field_blog_post_hero_image", "label": "Hero image", "name": "hero_image", "type": "image", "return_format": "array", "preview_size": "medium", "instructions": "Large image shown below the article header." },
     { "key": "field_blog_post_intro_text", "label": "Introduction text", "name": "intro_text", "type": "textarea", "rows": 4, "instructions": "Short intro paragraph shown before the main article body." },
-    { "key": "field_blog_post_reading_time", "label": "Reading time", "name": "reading_time", "type": "text", "placeholder": "4 min", "instructions": "Shown in meta data." }
+    { "key": "field_blog_post_reading_time", "label": "Reading time (optional)", "name": "reading_time", "type": "text", "placeholder": "4 min", "instructions": "Leave empty to auto-calculate based on word count (200 wpm). Fill only if you want to override." }
   ],
   "location": [
     [{ "param": "post_type", "operator": "==", "value": "blog" }]

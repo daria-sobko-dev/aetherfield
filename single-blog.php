@@ -12,7 +12,7 @@ while ( have_posts() ) {
 
 	$hero_image   = get_field( 'hero_image' );
 	$intro_text   = get_field( 'intro_text' );
-	$reading_time = get_field( 'reading_time' );
+	$reading_time = aetherfield_reading_time();
 	$topics       = get_the_terms( get_the_ID(), 'blog_topic' );
 	$topic        = ( ! is_wp_error( $topics ) && ! empty( $topics ) ) ? $topics[0]->name : '';
 	$published    = get_the_date();
