@@ -1,14 +1,20 @@
 <?php
 /**
- * Blog block render template.
+ * Blog block render template — shows the latest 3 Blog CPT posts.
  *
  * @package Aetherfield
  */
 
 $title = get_field( 'blog_title' );
-$items = get_field( 'blog_items' );
 $button = get_field( 'blog_button' );
 $sticker_url = get_template_directory_uri() . '/blocks/blog/sticker.svg';
+
+$blog_query = new WP_Query( array(
+	'post_type'      => 'blog',
+	'posts_per_page' => 3,
+	'orderby'        => 'date',
+	'order'          => 'DESC',
+) );
 ?>
 <section class="section section--blog" aria-labelledby="blog-title">
 	<div class="section__inner">
@@ -17,35 +23,46 @@ $sticker_url = get_template_directory_uri() . '/blocks/blog/sticker.svg';
 			<div class="blog__sticker" aria-hidden="true">
 				<img src="<?= esc_url( $sticker_url ) ?>" alt="">
 			</div>
-			<?php if ( $items ) { ?>
+			<?php if ( $blog_query->have_posts() ) { ?>
 				<div class="blog-list">
-					<?php foreach ( $items as $p ) {
-						$p_image = $p['image'];
-						$p_title = $p['title'];
-						$p_category = $p['category'];
-						$p_reading_time = $p['reading_time'];
-						$p_link = $p['link'];
-						$p_link_url = ! empty( $p_link['url'] ) ? $p_link['url'] : '#';
-						$p_link_target = ! empty( $p_link['target'] ) ? $p_link['target'] : '';
+					<?php while ( $blog_query->have_posts() ) {
+						$blog_query->the_post();
+
+						$thumb_id     = get_post_thumbnail_id();
+						$thumb_url    = $thumb_id ? wp_get_attachment_image_url( $thumb_id, 'medium' ) : '';
+						$thumb_alt    = $thumb_id ? get_post_meta( $thumb_id, '_wp_attachment_image_alt', true ) : '';
+						$reading_time = get_field( 'reading_time' );
+						$topics       = get_the_terms( get_the_ID(), 'blog_topic' );
+						$topic        = ( ! is_wp_error( $topics ) && ! empty( $topics ) ) ? $topics[0]->name : '';
 						?>
 						<article class="blog-item">
-							<a class="blog-item__content" href="<?= esc_url( $p_link_url ) ?>"<?= $p_link_target ? ' target="' . esc_attr( $p_link_target ) . '"' : '' ?>>
-								<?php if ( $p_image ) { ?>
+							<a class="blog-item__content" href="<?= esc_url( get_permalink() ) ?>">
+								<?php if ( $thumb_url ) { ?>
 									<div class="blog-item__image">
-										<img src="<?= esc_url( $p_image['url'] ) ?>" alt="<?= esc_attr( $p_image['alt'] ) ?>">
+										<img src="<?= esc_url( $thumb_url ) ?>" alt="<?= esc_attr( $thumb_alt ) ?>">
 									</div>
 								<?php } ?>
 								<div class="blog-item__info">
-									<h3 class="h-card"><?= esc_html( $p_title ) ?></h3>
-									<div class="blog-item__details">
-										<span><?= esc_html( $p_category ) ?></span>
-										<span>·</span>
-										<span><?= esc_html( $p_reading_time ) ?></span>
-									</div>
+									<h3 class="h-card"><?= esc_html( get_the_title() ) ?></h3>
+									<?php if ( $topic || $reading_time ) { ?>
+										<div class="blog-item__details">
+											<?php if ( $topic ) { ?>
+												<span><?= esc_html( $topic ) ?></span>
+											<?php } ?>
+											<?php if ( $topic && $reading_time ) { ?>
+												<span>·</span>
+											<?php } ?>
+											<?php if ( $reading_time ) { ?>
+												<span><?= esc_html( $reading_time ) ?></span>
+											<?php } ?>
+										</div>
+									<?php } ?>
 								</div>
 							</a>
 						</article>
-					<?php } ?>
+					<?php }
+					wp_reset_postdata();
+					?>
 				</div>
 			<?php } ?>
 			<?php if ( $button ) { ?>

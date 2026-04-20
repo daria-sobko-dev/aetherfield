@@ -3,22 +3,7 @@
   "title": "Block: Blog",
   "fields": [
     { "key": "field_blog_title", "label": "Section title", "name": "blog_title", "type": "text", "default_value": "From the journal" },
-    {
-      "key": "field_blog_items",
-      "label": "Journal items",
-      "name": "blog_items",
-      "type": "repeater",
-      "layout": "block",
-      "button_label": "Add article",
-      "sub_fields": [
-        { "key": "field_blog_item_image", "label": "Image", "name": "image", "type": "image", "return_format": "array", "preview_size": "thumbnail" },
-        { "key": "field_blog_item_title", "label": "Title", "name": "title", "type": "text" },
-        { "key": "field_blog_item_category", "label": "Category", "name": "category", "type": "text" },
-        { "key": "field_blog_item_time", "label": "Reading time", "name": "reading_time", "type": "text" },
-        { "key": "field_blog_item_link", "label": "Link", "name": "link", "type": "link" }
-      ]
-    },
-    { "key": "field_blog_button", "label": "Button", "name": "blog_button", "type": "link" }
+    { "key": "field_blog_button", "label": "Button", "name": "blog_button", "type": "link", "instructions": "Usually links to /blog/ archive." }
   ],
   "location": [
     [{ "param": "block", "operator": "==", "value": "acf/blog" }]
