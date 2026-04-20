@@ -18,7 +18,7 @@ $sticker_url = get_template_directory_uri() . '/blocks/blog/sticker.svg';
 				<img src="<?= esc_url( $sticker_url ) ?>" alt="">
 			</div>
 			<?php if ( $items ) { ?>
-				<div class="journal-list">
+				<div class="blog-list">
 					<?php foreach ( $items as $p ) {
 						$p_image = $p['image'];
 						$p_title = $p['title'];
@@ -28,16 +28,16 @@ $sticker_url = get_template_directory_uri() . '/blocks/blog/sticker.svg';
 						$p_link_url = ! empty( $p_link['url'] ) ? $p_link['url'] : '#';
 						$p_link_target = ! empty( $p_link['target'] ) ? $p_link['target'] : '';
 						?>
-						<article class="journal-item">
-							<a class="journal-item__content" href="<?= esc_url( $p_link_url ) ?>"<?= $p_link_target ? ' target="' . esc_attr( $p_link_target ) . '"' : '' ?>>
+						<article class="blog-item">
+							<a class="blog-item__content" href="<?= esc_url( $p_link_url ) ?>"<?= $p_link_target ? ' target="' . esc_attr( $p_link_target ) . '"' : '' ?>>
 								<?php if ( $p_image ) { ?>
-									<div class="journal-item__image">
+									<div class="blog-item__image">
 										<img src="<?= esc_url( $p_image['url'] ) ?>" alt="<?= esc_attr( $p_image['alt'] ) ?>">
 									</div>
 								<?php } ?>
-								<div class="journal-item__info">
+								<div class="blog-item__info">
 									<h3 class="h-card"><?= esc_html( $p_title ) ?></h3>
-									<div class="journal-item__details">
+									<div class="blog-item__details">
 										<span><?= esc_html( $p_category ) ?></span>
 										<span>·</span>
 										<span><?= esc_html( $p_reading_time ) ?></span>
