@@ -559,4 +559,12 @@ ul, ol {
 	.footer__image {
 		height: 120px;
 	}
+
+	.footer__logo {
+		aspect-ratio: auto;
+	}
+
+	.footer__logo img {
+		height: calc(55 * 100vw / 375);
+	}
 }
