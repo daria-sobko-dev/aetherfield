@@ -1,0 +1,19 @@
+{
+  "key": "group_aetherfield_blog_archive_options",
+  "title": "Blog Archive Settings",
+  "fields": [
+    { "key": "field_blog_archive_hero_image", "label": "Hero image", "name": "blog_archive_hero_image", "type": "image", "return_format": "array", "preview_size": "medium", "instructions": "Large banner image shown at the top of the blog archive page." },
+    { "key": "field_blog_archive_cta_title", "label": "CTA title", "name": "blog_archive_cta_title", "type": "text", "default_value": "Subscribe to Aetherfield Journal" },
+    { "key": "field_blog_archive_cta_button", "label": "CTA button", "name": "blog_archive_cta_button", "type": "link" }
+  ],
+  "location": [
+    [{ "param": "options_page", "operator": "==", "value": "aetherfield-blog-archive" }]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "active": true,
+  "show_in_rest": 0
+}

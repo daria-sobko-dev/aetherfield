@@ -128,6 +128,21 @@ function aetherfield_scripts() {
 	wp_enqueue_style( 'aetherfield-style', get_stylesheet_uri(), array(), _S_VERSION );
 
 	wp_enqueue_script( 'aetherfield-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+
+	if ( is_post_type_archive( 'blog' ) || is_tax( 'blog_topic' ) ) {
+		wp_enqueue_style(
+			'aetherfield-archive-blog',
+			get_template_directory_uri() . '/assets/css/archive-blog.css',
+			array(),
+			_S_VERSION
+		);
+		wp_enqueue_style(
+			'aetherfield-block-cta',
+			get_template_directory_uri() . '/blocks/cta/style.css',
+			array(),
+			_S_VERSION
+		);
+	}
 }
 add_action( 'wp_enqueue_scripts', 'aetherfield_scripts' );
 
@@ -135,6 +150,11 @@ add_action( 'wp_enqueue_scripts', 'aetherfield_scripts' );
  * Register custom post types and taxonomies.
  */
 require get_template_directory() . '/inc/cpt.php';
+
+/**
+ * Register ACF Options pages.
+ */
+require get_template_directory() . '/inc/options.php';
 
 /**
  * Register ACF blocks and related filters.
