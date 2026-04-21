@@ -339,6 +339,12 @@ ul, ol {
 .site-footer {
 	background: var(--color-bg-4);
 	padding: 20px;
+}
+
+.site-footer__inner {
+	width: 100%;
+	max-width: var(--container-max);
+	margin: 0 auto;
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
@@ -533,6 +539,9 @@ ul, ol {
 	/* Footer */
 	.site-footer {
 		padding: 40px 20px 20px;
+	}
+
+	.site-footer__inner {
 		gap: 16px;
 	}
 
@@ -547,6 +556,7 @@ ul, ol {
 		gap: 16px;
 		justify-content: center;
 		align-items: flex-start;
+		width: 100%;
 		font-size: 18px;
 		letter-spacing: -0.36px;
 	}
@@ -554,6 +564,8 @@ ul, ol {
 	.footer__copy {
 		text-align: center;
 		width: 100%;
+		font-size: 18px;
+		letter-spacing: -0.54px;
 	}
 
 	.footer__image {

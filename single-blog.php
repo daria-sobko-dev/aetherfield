@@ -16,7 +16,7 @@ while ( have_posts() ) {
 	$topics       = get_the_terms( get_the_ID(), 'blog_topic' );
 	$topic        = ( ! is_wp_error( $topics ) && ! empty( $topics ) ) ? $topics[0]->name : '';
 	$published    = get_the_date();
-	$author       = get_the_author();
+	$author       = get_field( 'author' ) ?: get_the_author();
 	?>
 
 	<main id="primary" class="site-main">
@@ -67,14 +67,9 @@ while ( have_posts() ) {
 						<p class="p-lg article-intro__text"><?= esc_html( $intro_text ) ?></p>
 					<?php } ?>
 					<div class="article-intro__divider" aria-hidden="true"></div>
-				</div>
-			</div>
-		</section>
-
-		<section class="section section--article-body">
-			<div class="section__inner article-body__inner">
-				<div class="article-body cms-rich-text">
-					<?php the_content(); ?>
+					<div class="article-body cms-rich-text">
+						<?php the_content(); ?>
+					</div>
 				</div>
 			</div>
 		</section>
