@@ -1,0 +1,152 @@
+/* ==========================================================================
+   Intro block
+   ========================================================================== */
+.section--intro {
+	padding: 140px 20px 0;
+
+
+	&::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 808px;
+		background: var(--gradient-intro);
+		z-index: 0;
+		pointer-events: none;
+
+		@media (max-width: 1024px) {
+			height: 759px;
+		}
+
+		@media (max-width: 768px) {
+			height: 536px;
+		}
+	}
+
+	.section__inner {
+		position: relative;
+		z-index: 1;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 56px;
+
+		@media (max-width: 1024px) {
+			gap: 56px;
+		}
+
+		@media (max-width: 768px) {
+			gap: 32px;
+		}
+	}
+
+	@media (max-width: 1024px) {
+		padding: 140px 20px 0;
+	}
+
+	@media (max-width: 768px) {
+		padding: 120px 20px 0;
+	}
+}
+
+.intro {
+	&__content {
+		display: flex;
+		flex-direction: column;
+		gap: 32px;
+		align-items: center;
+		width: 100%;
+		max-width: 1030px;
+		text-align: center;
+
+		@media (max-width: 768px) {
+			gap: 24px;
+		}
+	}
+
+	&__top {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+		align-items: center;
+		width: 100%;
+
+		@media (max-width: 768px) {
+			gap: 12px;
+		}
+	}
+
+	&__heading {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+
+		.h-display-2 {
+			margin-top: -8px;
+
+			@media (max-width: 768px) {
+				margin-top: 0;
+			}
+		}
+	}
+
+	&__subheading {
+		@media (max-width: 768px) {
+			font-size: 18px;
+			letter-spacing: -0.54px;
+		}
+	}
+
+	&__buttons {
+		display: flex;
+		gap: 16px;
+		align-items: center;
+
+		@media (max-width: 768px) {
+			flex-direction: column;
+			align-items: center;
+			width: 100%;
+			max-width: 214px;
+			gap: 12px;
+
+			.btn {
+				width: 100%;
+
+				&:first-child {
+					width: 164px;
+				}
+			}
+		}
+	}
+
+	&__image {
+		width: 960px;
+		max-width: 100%;
+		height: 608px;
+		border: 2px solid #000;
+		border-radius: var(--radius-lg);
+		overflow: hidden;
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			display: block;
+		}
+
+		@media (max-width: 1024px) {
+			width: 100%;
+			height: auto;
+			aspect-ratio: 760 / 481;
+			border-radius: 20px;
+		}
+
+		@media (max-width: 768px) {
+			aspect-ratio: 335 / 212;
+			height: auto;
+			border-radius: 12px;
+		}
+	}
+}

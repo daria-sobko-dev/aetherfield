@@ -5,6 +5,8 @@
  * @package Aetherfield
  */
 
+defined( 'ABSPATH' ) || exit;
+
 $image = get_field( 'founder_image' );
 $caption = get_field( 'founder_caption' );
 $name = get_field( 'founder_name' );
@@ -16,12 +18,12 @@ $sticker_url = get_template_directory_uri() . '/blocks/founder/sticker.svg';
 	<div class="section__inner founder__inner">
 		<?php if ( file_exists( $sticker_path ) ) { ?>
 			<div class="founder__sticker" aria-hidden="true">
-				<img src="<?= esc_url( $sticker_url ) ?>" alt="">
+				<img loading="lazy" decoding="async" src="<?= esc_url( $sticker_url ) ?>" alt="">
 			</div>
 		<?php } ?>
 		<?php if ( $image ) { ?>
 			<div class="founder__image">
-				<img src="<?= esc_url( $image['url'] ) ?>" alt="<?= esc_attr( $image['alt'] ) ?>">
+				<img loading="lazy" decoding="async" src="<?= esc_url( $image['url'] ) ?>" alt="<?= esc_attr( $image['alt'] ) ?>">
 			</div>
 		<?php } ?>
 		<div class="founder__quote">

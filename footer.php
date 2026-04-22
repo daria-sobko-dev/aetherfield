@@ -23,11 +23,11 @@ $footer_logo  = get_template_directory_uri() . '/assets/images/logo-big.svg';
 			</div>
 
 			<div class="footer__image" aria-hidden="true">
-				<img src="<?= esc_url( $footer_image ) ?>" alt="">
+				<img loading="lazy" decoding="async" width="2000" height="1121" src="<?= esc_url( $footer_image ) ?>" alt="">
 			</div>
 
 			<div class="footer__logo" aria-label="<?= esc_attr( get_bloginfo( 'name' ) ) ?>">
-				<img src="<?= esc_url( $footer_logo ) ?>" alt="<?= esc_attr( get_bloginfo( 'name' ) ) ?>">
+				<img loading="lazy" decoding="async" width="1240" height="204" src="<?= esc_url( $footer_logo ) ?>" alt="<?= esc_attr( get_bloginfo( 'name' ) ) ?>">
 			</div>
 		</div>
 	</footer>

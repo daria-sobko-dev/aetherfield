@@ -5,6 +5,8 @@
  * @package Aetherfield
  */
 
+defined( 'ABSPATH' ) || exit;
+
 $heading = get_field( 'principles_heading' );
 $items = get_field( 'principles_items' );
 ?>
@@ -25,7 +27,7 @@ $items = get_field( 'principles_items' );
 					<article class="principle-card" aria-label="<?= esc_attr( $v_title ) ?>">
 						<?php if ( $v_icon ) { ?>
 							<div class="principle-card__icon" aria-hidden="true">
-								<img src="<?= esc_url( $v_icon['url'] ) ?>" alt="">
+								<img loading="lazy" decoding="async" src="<?= esc_url( $v_icon['url'] ) ?>" alt="">
 							</div>
 						<?php } ?>
 						<div class="principle-card__content">

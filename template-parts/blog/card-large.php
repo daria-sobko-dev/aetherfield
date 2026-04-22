@@ -7,6 +7,8 @@
  * @package Aetherfield
  */
 
+defined( 'ABSPATH' ) || exit;
+
 $hero         = get_field( 'hero_image' );
 $thumb_id     = get_post_thumbnail_id();
 $thumb_url    = ! empty( $hero['url'] ) ? $hero['url'] : ( $thumb_id ? wp_get_attachment_image_url( $thumb_id, 'large' ) : '' );
@@ -22,7 +24,7 @@ $topic        = ( ! is_wp_error( $topics ) && ! empty( $topics ) ) ? $topics[0]-
 	<a class="blog-card__link" href="<?= esc_url( $permalink ) ?>">
 		<?php if ( $thumb_url ) { ?>
 			<div class="blog-card__image">
-				<img src="<?= esc_url( $thumb_url ) ?>" alt="<?= esc_attr( $thumb_alt ) ?>">
+				<img loading="lazy" decoding="async" src="<?= esc_url( $thumb_url ) ?>" alt="<?= esc_attr( $thumb_alt ) ?>">
 			</div>
 		<?php } ?>
 		<div class="blog-card__text">

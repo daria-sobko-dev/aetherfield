@@ -72,7 +72,7 @@ while ( have_posts() ) {
 					<div class="job__cta">
 						<?php if ( file_exists( $sticker_path ) ) { ?>
 							<div class="job__sticker" aria-hidden="true">
-								<img src="<?= esc_url( $sticker_url ) ?>" alt="">
+								<img loading="lazy" decoding="async" src="<?= esc_url( $sticker_url ) ?>" alt="">
 							</div>
 						<?php } ?>
 						<h2 class="job__cta-heading">

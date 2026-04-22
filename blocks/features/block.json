@@ -1,0 +1,28 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "acf/features",
+  "title": "Features",
+  "description": "",
+  "category": "aetherfield",
+  "icon": "layout",
+  "keywords": [
+    "features"
+  ],
+  "textdomain": "aetherfield",
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "render.php"
+  },
+  "supports": {
+    "align": false,
+    "anchor": false,
+    "customClassName": false,
+    "html": false,
+    "color": false,
+    "spacing": false,
+    "typography": false,
+    "jsx": true
+  },
+  "style": "file:./style.css"
+}

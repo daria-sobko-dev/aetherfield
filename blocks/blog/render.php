@@ -5,6 +5,8 @@
  * @package Aetherfield
  */
 
+defined( 'ABSPATH' ) || exit;
+
 $title = get_field( 'blog_title' );
 $button = get_field( 'blog_button' );
 $sticker_url = get_template_directory_uri() . '/blocks/blog/sticker.svg';
@@ -21,7 +23,7 @@ $blog_query = new WP_Query( array(
 		<h2 id="blog-title" class="h-section blog__title"><?= esc_html( $title ) ?></h2>
 		<div class="section__content blog__body">
 			<div class="blog__sticker" aria-hidden="true">
-				<img src="<?= esc_url( $sticker_url ) ?>" alt="">
+				<img loading="lazy" decoding="async" src="<?= esc_url( $sticker_url ) ?>" alt="">
 			</div>
 			<?php if ( $blog_query->have_posts() ) { ?>
 				<div class="blog-list">
@@ -40,7 +42,7 @@ $blog_query = new WP_Query( array(
 							<a class="blog-item__content" href="<?= esc_url( get_permalink() ) ?>">
 								<?php if ( $thumb_url ) { ?>
 									<div class="blog-item__image">
-										<img src="<?= esc_url( $thumb_url ) ?>" alt="<?= esc_attr( $thumb_alt ) ?>">
+										<img loading="lazy" decoding="async" src="<?= esc_url( $thumb_url ) ?>" alt="<?= esc_attr( $thumb_alt ) ?>">
 									</div>
 								<?php } ?>
 								<div class="blog-item__info">

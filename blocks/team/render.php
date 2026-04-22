@@ -5,6 +5,8 @@
  * @package Aetherfield
  */
 
+defined( 'ABSPATH' ) || exit;
+
 $heading = get_field( 'team_heading' );
 $members = get_field( 'team_members' );
 ?>

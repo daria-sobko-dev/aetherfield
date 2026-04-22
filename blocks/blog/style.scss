@@ -1,0 +1,152 @@
+/* ==========================================================================
+   Blog block
+   ========================================================================== */
+.section--blog {
+	.section__inner {
+		max-width: 620px;
+		display: flex;
+		flex-direction: column;
+		gap: 40px;
+		align-items: center;
+	}
+
+	@media (max-width: 1024px) {
+		padding-top: 40px;
+	}
+
+	@media (max-width: 768px) {
+		padding-top: 0;
+
+		.section__inner {
+			gap: 24px;
+		}
+	}
+}
+
+.blog {
+	&__title {
+		max-width: 612px;
+		text-align: center;
+	}
+
+	&__body {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+		align-items: center;
+		width: 100%;
+
+		@media (max-width: 768px) {
+			.btn {
+				width: 100%;
+			}
+		}
+	}
+
+	&__sticker {
+		position: absolute;
+		left: -276.67px;
+		top: -72.98px;
+		width: 400px;
+		height: 154px;
+		transform: rotate(-10deg);
+		pointer-events: none;
+		z-index: 1;
+
+		img {
+			width: 100%;
+			height: 100%;
+		}
+
+		@media (max-width: 1024px) {
+			left: -173.64px;
+			top: -112.20px;
+			width: 339.2px;
+			height: 130.6px;
+		}
+
+		@media (max-width: 768px) {
+			display: none;
+		}
+	}
+}
+
+.blog-list {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.blog-item {
+	display: flex;
+	align-items: flex-start;
+	padding: 24px 0;
+	border-bottom: 1px solid var(--color-divider);
+
+	&:first-child {
+		border-top: 1px solid var(--color-divider);
+	}
+
+	&__content {
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+		gap: 16px;
+		width: 100%;
+
+		@media (max-width: 768px) {
+			flex-direction: column;
+			gap: 16px;
+		}
+	}
+
+	&__image {
+		flex-shrink: 0;
+		width: 165px;
+		height: 100px;
+		overflow: hidden;
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+
+		@media (max-width: 768px) {
+			width: 100%;
+			height: auto;
+			aspect-ratio: 295 / 180;
+		}
+	}
+
+	&__info {
+		flex: 1 0 0;
+		min-width: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		line-height: 1;
+
+		@media (max-width: 768px) {
+			width: 100%;
+
+			.h-card {
+				font-size: 18px;
+				letter-spacing: -0.36px;
+			}
+		}
+	}
+
+	&__details {
+		display: flex;
+		gap: 8px;
+		font-family: var(--font-mono);
+		font-size: 14px;
+		color: var(--color-subtle);
+	}
+
+	@media (max-width: 768px) {
+		padding: 24px 0;
+	}
+}

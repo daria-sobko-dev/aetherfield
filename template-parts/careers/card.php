@@ -5,6 +5,8 @@
  * @package Aetherfield
  */
 
+defined( 'ABSPATH' ) || exit;
+
 $title           = get_the_title();
 $employment_type = get_field( 'employment_type' );
 $location        = get_field( 'location' );

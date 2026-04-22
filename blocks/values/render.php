@@ -5,6 +5,8 @@
  * @package Aetherfield
  */
 
+defined( 'ABSPATH' ) || exit;
+
 $bg = get_field( 'values_bg' );
 $heading_1 = get_field( 'values_heading_1' );
 $heading_2 = get_field( 'values_heading_2' );
@@ -13,7 +15,7 @@ $items = get_field( 'values_items' );
 <section class="section section--values" aria-labelledby="values-title">
 	<?php if ( $bg ) { ?>
 		<div class="values__bg" aria-hidden="true">
-			<img src="<?= esc_url( $bg['url'] ) ?>" alt="">
+			<img loading="lazy" decoding="async" src="<?= esc_url( $bg['url'] ) ?>" alt="">
 		</div>
 	<?php } ?>
 	<div class="section__inner">
@@ -31,7 +33,7 @@ $items = get_field( 'values_items' );
 					<article class="value-card">
 						<?php if ( $v_icon ) { ?>
 							<div class="value-card__icon" aria-hidden="true">
-								<img src="<?= esc_url( $v_icon['url'] ) ?>" alt="">
+								<img loading="lazy" decoding="async" src="<?= esc_url( $v_icon['url'] ) ?>" alt="">
 							</div>
 						<?php } ?>
 						<div class="value-card__content">

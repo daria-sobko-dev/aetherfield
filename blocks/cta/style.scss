@@ -1,0 +1,213 @@
+/* ==========================================================================
+   CTA block
+   ========================================================================== */
+.section--cta {
+	padding: 120px 20px;
+	background: var(--color-bg-2);
+	text-align: center;
+
+	.section__inner {
+		display: flex;
+		flex-direction: column;
+		gap: 32px;
+		align-items: center;
+	}
+
+	@media (max-width: 1024px) {
+		padding: 80px 20px;
+	}
+
+	@media (max-width: 768px) {
+		padding: 40px 20px;
+	}
+}
+
+.cta {
+	&__title {
+		width: 100%;
+	}
+}
+
+/* ==========================================================================
+   Contact form (CF7 rendered inside .cta-form)
+   ========================================================================== */
+.cta-form {
+	width: 100%;
+	max-width: 640px;
+	text-align: left;
+
+	.wpcf7,
+	.cta-form__form {
+		width: 100%;
+	}
+
+	input::placeholder {
+		color: var(--color-subtle);
+		opacity: 1;
+	}
+
+	input[type="text"],
+	input[type="email"],
+	input[type="tel"],
+	input[type="url"] {
+		width: 100%;
+		background: #fff;
+		border: 1px solid var(--color-divider);
+		padding: 18px 16px;
+		font-family: var(--font-serif);
+		font-size: 16px;
+		line-height: 1.2;
+		color: #000;
+		border-radius: 0;
+	}
+
+	input:focus {
+		outline: none;
+		border-color: #000;
+	}
+
+	/* CF7 response messages */
+	.wpcf7-response-output {
+		margin: 24px 0 0;
+		padding: 12px 16px;
+		font-family: var(--font-serif);
+		font-size: 14px;
+		border: 1px solid;
+		text-align: center;
+	}
+
+	.wpcf7-not-valid-tip {
+		margin-top: 8px;
+		color: #c00;
+		font-family: var(--font-mono);
+		font-size: 12px;
+		text-align: left;
+	}
+
+	.cta-form__form.sent .wpcf7-response-output {
+		border-color: #1b5e20;
+		background: #e8f5e9;
+		color: #1b5e20;
+	}
+
+	.cta-form__form.invalid .wpcf7-response-output,
+	.cta-form__form.failed .wpcf7-response-output {
+		border-color: #c00;
+		background: #ffebee;
+		color: #c00;
+	}
+
+	&__block {
+		display: flex;
+		flex-direction: column;
+		gap: 32px;
+	}
+
+	&__fields {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 16px;
+
+		@media (max-width: 768px) {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	&__field {
+		position: relative;
+	}
+
+	&__field--email,
+	&__field--message {
+		grid-column: 1 / -1;
+
+		@media (max-width: 768px) {
+			grid-column: 1;
+		}
+	}
+
+	/* Field wrapper — label sits above the input */
+	&__field-wrap {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+	}
+
+	&__label {
+		font-family: var(--font-mono);
+		font-size: 14px;
+		line-height: 1;
+		color: var(--color-subtle);
+	}
+
+	/* Bottom row: consent + submit */
+	&__actions {
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+		align-items: flex-start;
+	}
+
+	&__consent {
+		display: flex;
+		align-items: flex-start;
+		gap: 8px;
+		cursor: pointer;
+		font-family: var(--font-serif);
+		font-size: 14px;
+		line-height: 1.3;
+		color: var(--color-subtle);
+		text-align: left;
+
+		.wpcf7-list-item {
+			margin: 0;
+		}
+
+		input[type="checkbox"] {
+			width: 16px;
+			height: 16px;
+			margin: 2px 0 0;
+			accent-color: #000;
+			flex-shrink: 0;
+		}
+
+		.wpcf7-list-item-label {
+			flex: 1;
+		}
+	}
+
+	/* Submit button */
+	&__submit {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 10px;
+		background: #000;
+		color: #fff;
+		padding: 16px 24px;
+		border: none;
+		font-family: var(--font-mono);
+		font-size: 14px;
+		font-weight: 500;
+		line-height: 1;
+		cursor: pointer;
+		transition: opacity 0.15s ease;
+		border-radius: 0;
+
+		&:hover {
+			opacity: 0.85;
+		}
+
+		@media (max-width: 768px) {
+			width: 100%;
+		}
+	}
+
+	&__bullet {
+		display: inline-block;
+		width: 4px;
+		height: 4px;
+		background: #fff;
+		flex-shrink: 0;
+	}
+}

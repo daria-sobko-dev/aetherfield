@@ -5,6 +5,8 @@
  * @package Aetherfield
  */
 
+defined( 'ABSPATH' ) || exit;
+
 $image = get_field( 'case_image' );
 $title = get_field( 'case_title' );
 $description = get_field( 'case_description' );
@@ -15,7 +17,7 @@ $button = get_field( 'case_button' );
 		<div class="case-study__module">
 			<?php if ( $image ) { ?>
 				<div class="case-study__image">
-					<img src="<?= esc_url( $image['url'] ) ?>" alt="<?= esc_attr( $image['alt'] ) ?>">
+					<img loading="lazy" decoding="async" src="<?= esc_url( $image['url'] ) ?>" alt="<?= esc_attr( $image['alt'] ) ?>">
 				</div>
 			<?php } ?>
 			<div class="case-study__content">

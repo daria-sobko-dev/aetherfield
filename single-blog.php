@@ -41,10 +41,10 @@ while ( have_posts() ) {
 		</section>
 
 		<?php if ( $hero_image ) { ?>
-			<section class="section section--article-hero" aria-hidden="true">
+			<section class="section section--article-image" aria-hidden="true">
 				<div class="section__inner article-hero__inner">
 					<div class="article-hero__image">
-						<img src="<?= esc_url( $hero_image['url'] ) ?>" alt="<?= esc_attr( $hero_image['alt'] ) ?>">
+						<img decoding="async" fetchpriority="high" width="<?= (int) $hero_image['width'] ?>" height="<?= (int) $hero_image['height'] ?>" src="<?= esc_url( $hero_image['url'] ) ?>" alt="<?= esc_attr( $hero_image['alt'] ) ?>">
 					</div>
 				</div>
 			</section>

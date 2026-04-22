@@ -5,6 +5,8 @@
  * @package Aetherfield
  */
 
+defined( 'ABSPATH' ) || exit;
+
 $image_desktop = get_field( 'mission_image_desktop' );
 $image_tablet = get_field( 'mission_image_tablet' );
 $image_mobile = get_field( 'mission_image_mobile' );
@@ -22,7 +24,7 @@ $image_mobile_url = $image_mobile ? $image_mobile['url'] : $image_tablet_url;
 				<picture>
 					<source media="(max-width: 768px)" srcset="<?= esc_url( $image_mobile_url ) ?>">
 					<source media="(max-width: 1024px)" srcset="<?= esc_url( $image_tablet_url ) ?>">
-					<img src="<?= esc_url( $image_desktop['url'] ) ?>" alt="<?= esc_attr( $image_desktop['alt'] ) ?>">
+					<img decoding="async" fetchpriority="high" src="<?= esc_url( $image_desktop['url'] ) ?>" alt="<?= esc_attr( $image_desktop['alt'] ) ?>">
 				</picture>
 			</div>
 		<?php } ?>

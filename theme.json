@@ -1,0 +1,102 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"settings": {
+		"appearanceTools": false,
+		"layout": {
+			"contentSize": "740px",
+			"wideSize": "1240px"
+		},
+		"useRootPaddingAwareAlignments": false,
+		"color": {
+			"background": true,
+			"text": true,
+			"link": true,
+			"custom": false,
+			"customGradient": false,
+			"defaultPalette": false,
+			"defaultGradients": false,
+			"defaultDuotone": false,
+			"palette": [
+				{ "slug": "bg",           "color": "#ffffff", "name": "Background" },
+				{ "slug": "bg-2",         "color": "#f6f8fb", "name": "Background 2 (muted)" },
+				{ "slug": "bg-4",         "color": "#fff546", "name": "Background 4 (yellow)" },
+				{ "slug": "text",         "color": "#000000", "name": "Text" },
+				{ "slug": "subtle",       "color": "#6c6c6c", "name": "Subtle" },
+				{ "slug": "divider",      "color": "#dbe0ec", "name": "Divider" },
+				{ "slug": "sticker",      "color": "#2683eb", "name": "Sticker Blue" },
+				{ "slug": "footer-text",  "color": "#66640f", "name": "Footer Text" }
+			],
+			"gradients": [
+				{
+					"slug": "intro",
+					"name": "Intro (blue to cream)",
+					"gradient": "linear-gradient(to bottom, #a8d3ff 0%, #fff4df 100%)"
+				}
+			]
+		},
+		"typography": {
+			"customFontSize": false,
+			"dropCap": false,
+			"fluid": false,
+			"fontFamilies": [
+				{
+					"slug": "serif",
+					"name": "Source Serif Pro",
+					"fontFamily": "'Source Serif Pro', Georgia, serif"
+				},
+				{
+					"slug": "display",
+					"name": "Radio Canada Big",
+					"fontFamily": "'Radio Canada Big', 'Helvetica Neue', Arial, sans-serif"
+				},
+				{
+					"slug": "mono",
+					"name": "Geist Mono",
+					"fontFamily": "'Geist Mono', ui-monospace, 'SF Mono', Menlo, monospace"
+				}
+			],
+			"fontSizes": [
+				{ "slug": "caption",  "size": "14px", "name": "Caption" },
+				{ "slug": "body",     "size": "16px", "name": "Body" },
+				{ "slug": "lead",     "size": "20px", "name": "Lead" },
+				{ "slug": "card",     "size": "20px", "name": "Card title" },
+				{ "slug": "section",  "size": "40px", "name": "Section title" },
+				{ "slug": "hero",     "size": "56px", "name": "Hero" },
+				{ "slug": "display",  "size": "80px", "name": "Display" }
+			]
+		},
+		"spacing": {
+			"customSpacingSize": false,
+			"padding": false,
+			"margin": false,
+			"blockGap": false,
+			"units": ["px", "em", "rem", "%", "vw"]
+		},
+		"border": {
+			"color": false,
+			"radius": false,
+			"style": false,
+			"width": false
+		},
+		"blocks": {
+			"core/paragraph": {
+				"color": { "text": true, "background": false }
+			},
+			"core/heading": {
+				"color": { "text": true, "background": false }
+			}
+		}
+	},
+	"styles": {
+		"color": {
+			"background": "var(--wp--preset--color--bg)",
+			"text": "var(--wp--preset--color--text)"
+		},
+		"typography": {
+			"fontFamily": "var(--wp--preset--font-family--serif)",
+			"fontSize": "16px",
+			"lineHeight": "1.2"
+		}
+	}
+}

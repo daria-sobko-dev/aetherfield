@@ -19,7 +19,7 @@ get_header();
 			<section class="section section--blog-hero" aria-hidden="true">
 				<div class="section__inner blog-hero__inner">
 					<div class="blog-hero__image">
-						<img src="<?= esc_url( $hero_image['url'] ) ?>" alt="<?= esc_attr( $hero_image['alt'] ) ?>">
+						<img decoding="async" fetchpriority="high" width="<?= (int) $hero_image['width'] ?>" height="<?= (int) $hero_image['height'] ?>" src="<?= esc_url( $hero_image['url'] ) ?>" alt="<?= esc_attr( $hero_image['alt'] ) ?>">
 					</div>
 				</div>
 			</section>

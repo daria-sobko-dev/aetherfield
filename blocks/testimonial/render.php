@@ -5,6 +5,8 @@
  * @package Aetherfield
  */
 
+defined( 'ABSPATH' ) || exit;
+
 $image = get_field( 'testimonial_image' );
 $quote = get_field( 'testimonial_quote' );
 $name = get_field( 'testimonial_name' );
@@ -16,7 +18,7 @@ $quote_icon_url = get_template_directory_uri() . '/blocks/testimonial/quote.svg'
 		<div class="section__content testimonial__content">
 			<?php if ( $image ) { ?>
 				<div class="testimonial__image">
-					<img src="<?= esc_url( $image['url'] ) ?>" alt="<?= esc_attr( $image['alt'] ) ?>">
+					<img loading="lazy" decoding="async" src="<?= esc_url( $image['url'] ) ?>" alt="<?= esc_attr( $image['alt'] ) ?>">
 				</div>
 			<?php } ?>
 			<div class="testimonial__quote">

@@ -14,6 +14,8 @@ $menu_icon_url = get_template_directory_uri() . '/assets/images/menu-icon.svg';
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<?php wp_head(); ?>
 </head>
 
@@ -26,11 +28,11 @@ $menu_icon_url = get_template_directory_uri() . '/assets/images/menu-icon.svg';
 		<nav class="nav" aria-label="<?= esc_attr__( 'Primary', 'aetherfield' ) ?>">
 			<div class="nav__inner">
 				<a class="nav__logo" href="<?= esc_url( home_url( '/' ) ) ?>" aria-label="<?= esc_attr( get_bloginfo( 'name' ) ) ?>">
-					<img src="<?= esc_url( $logo_url ) ?>" alt="<?= esc_attr( get_bloginfo( 'name' ) ) ?>">
+					<img src="<?= esc_url( $logo_url ) ?>" alt="<?= esc_attr( get_bloginfo( 'name' ) ) ?>" width="140" height="24" decoding="async" fetchpriority="high">
 				</a>
 
 				<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="<?= esc_attr__( 'Toggle menu', 'aetherfield' ) ?>">
-					<img src="<?= esc_url( $menu_icon_url ) ?>" alt="" aria-hidden="true">
+					<img src="<?= esc_url( $menu_icon_url ) ?>" alt="" aria-hidden="true" width="24" height="24" decoding="async">
 				</button>
 
 				<?php wp_nav_menu( array(

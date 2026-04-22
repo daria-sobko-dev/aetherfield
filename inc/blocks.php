@@ -3,10 +3,10 @@
  * Register ACF Blocks.
  *
  * Each block lives in /blocks/{name}/ with:
- *   - block.json (metadata)
+ *   - block.json (WP block metadata + ACF render config)
  *   - render.php (template)
- *   - style.css (frontend styles)
- *   - fields.json (ACF field group, auto-loaded)
+ *   - style.scss / style.css (frontend styles, auto-enqueued via block.json)
+ *   - group_aetherfield_{name}.json (ACF field group, loaded via acf/settings/load_json)
  *
  * @package Aetherfield
  */
@@ -26,6 +26,10 @@ add_filter( 'block_categories_all', function ( $categories ) {
 
 /**
  * Register all ACF blocks.
+ *
+ * Each block folder has block.json (read by ACF for metadata) plus explicit
+ * enqueue_style here so the CSS loads reliably only on pages where the
+ * block is present.
  */
 add_action( 'acf/init', 'aetherfield_register_blocks' );
 function aetherfield_register_blocks() {
@@ -48,7 +52,7 @@ function aetherfield_register_blocks() {
 	);
 
 	foreach ( $blocks as $slug => $title ) {
-		$dir_uri = get_template_directory_uri() . "/blocks/{$slug}";
+		$dir_uri  = get_template_directory_uri() . "/blocks/{$slug}";
 		$dir_path = get_template_directory() . "/blocks/{$slug}";
 
 		acf_register_block_type( array(
@@ -62,14 +66,14 @@ function aetherfield_register_blocks() {
 			'enqueue_style'   => file_exists( "{$dir_path}/style.css" ) ? "{$dir_uri}/style.css" : '',
 			'enqueue_script'  => file_exists( "{$dir_path}/view.js" ) ? "{$dir_uri}/view.js" : '',
 			'supports'        => array(
-				'align'            => false,
-				'anchor'           => false,
+				'align'           => false,
+				'anchor'          => false,
 				'customClassName' => false,
-				'html'             => false,
-				'color'            => false,
-				'spacing'          => false,
-				'typography'       => false,
-				'jsx'              => true,
+				'html'            => false,
+				'color'           => false,
+				'spacing'         => false,
+				'typography'      => false,
+				'jsx'             => true,
 			),
 		) );
 	}

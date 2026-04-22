@@ -5,6 +5,8 @@
  * @package Aetherfield
  */
 
+defined( 'ABSPATH' ) || exit;
+
 $heading_1 = get_field( 'intro_heading_1' );
 $heading_2 = get_field( 'intro_heading_2' );
 $subheading = get_field( 'intro_subheading' );
@@ -35,7 +37,7 @@ $image = get_field( 'intro_image' );
 		</div>
 		<?php if ( $image ) { ?>
 			<div class="intro__image">
-				<img src="<?= esc_url( $image['url'] ) ?>" alt="<?= esc_attr( $image['alt'] ) ?>">
+				<img decoding="async" fetchpriority="high" src="<?= esc_url( $image['url'] ) ?>" alt="<?= esc_attr( $image['alt'] ) ?>">
 			</div>
 		<?php } ?>
 	</div>

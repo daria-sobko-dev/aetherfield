@@ -5,6 +5,8 @@
  * @package Aetherfield
  */
 
+defined( 'ABSPATH' ) || exit;
+
 $title = get_field( 'features_title' );
 $image = get_field( 'features_image' );
 $items = get_field( 'features_items' );
@@ -18,7 +20,7 @@ $button = get_field( 'features_button' );
 		<div class="section__content features__content">
 			<?php if ( $image ) { ?>
 				<div class="features__image">
-					<img src="<?= esc_url( $image['url'] ) ?>" alt="<?= esc_attr( $image['alt'] ) ?>">
+					<img loading="lazy" decoding="async" src="<?= esc_url( $image['url'] ) ?>" alt="<?= esc_attr( $image['alt'] ) ?>">
 				</div>
 			<?php } ?>
 			<div class="features__list">

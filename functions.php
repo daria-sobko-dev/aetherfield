@@ -7,6 +7,8 @@
  * @package Aetherfield
  */
 
+defined( 'ABSPATH' ) || exit;
+
 if ( ! defined( '_S_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
 	define( '_S_VERSION', '1.0.0' );
@@ -127,7 +129,16 @@ function aetherfield_scripts() {
 
 	wp_enqueue_style( 'aetherfield-style', get_stylesheet_uri(), array(), _S_VERSION );
 
-	wp_enqueue_script( 'aetherfield-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+	wp_enqueue_script(
+		'aetherfield-navigation',
+		get_template_directory_uri() . '/js/navigation.js',
+		array(),
+		_S_VERSION,
+		array(
+			'in_footer' => true,
+			'strategy'  => 'defer',
+		)
+	);
 
 	if ( is_post_type_archive( 'blog' ) || is_tax( 'blog_topic' ) ) {
 		wp_enqueue_style(
@@ -192,6 +203,16 @@ require get_template_directory() . '/inc/options.php';
  * Register ACF blocks and related filters.
  */
 require get_template_directory() . '/inc/blocks.php';
+
+/**
+ * Front-end performance cleanups.
+ */
+require get_template_directory() . '/inc/performance.php';
+
+/**
+ * Schema.org JSON-LD for single posts.
+ */
+require get_template_directory() . '/inc/schema.php';
 
 /**
  * Navigation menu filters and fallbacks.
