@@ -5,8 +5,7 @@
  * @package Aetherfield
  */
 
-$logo_url = get_template_directory_uri() . '/assets/images/logo.svg';
-$arrow_url = get_template_directory_uri() . '/assets/images/arrow.svg';
+$logo_url      = get_template_directory_uri() . '/assets/images/logo.svg';
 $menu_icon_url = get_template_directory_uri() . '/assets/images/menu-icon.svg';
 ?>
 <!doctype html>
@@ -34,18 +33,14 @@ $menu_icon_url = get_template_directory_uri() . '/assets/images/menu-icon.svg';
 					<img src="<?= esc_url( $menu_icon_url ) ?>" alt="" aria-hidden="true">
 				</button>
 
-				<ul id="nav-menu" class="nav__menu">
-					<li><a href="#"><?= esc_html__( 'Product', 'aetherfield' ) ?></a></li>
-					<li><a href="#"><?= esc_html__( 'Journal', 'aetherfield' ) ?></a></li>
-					<li><a href="#"><?= esc_html__( 'About', 'aetherfield' ) ?></a></li>
-					<li><a href="#"><?= esc_html__( 'Careers', 'aetherfield' ) ?></a></li>
-					<li>
-						<a class="nav__cta" href="#">
-							<span><?= esc_html__( 'Get started', 'aetherfield' ) ?></span>
-							<img src="<?= esc_url( $arrow_url ) ?>" alt="" aria-hidden="true">
-						</a>
-					</li>
-				</ul>
+				<?php wp_nav_menu( array(
+					'theme_location' => 'primary',
+					'menu_id'        => 'nav-menu',
+					'menu_class'     => 'nav__menu',
+					'container'      => false,
+					'depth'          => 1,
+					'fallback_cb'    => 'aetherfield_primary_fallback_menu',
+				) ); ?>
 			</div>
 		</nav>
 	</header>

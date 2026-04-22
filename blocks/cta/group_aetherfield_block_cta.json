@@ -3,7 +3,8 @@
   "title": "Block: CTA",
   "fields": [
     { "key": "field_cta_title", "label": "Title", "name": "cta_title", "type": "textarea", "rows": 2, "default_value": "Ready to operationalize your sustainability goals?" },
-    { "key": "field_cta_button", "label": "Button", "name": "cta_button", "type": "link" }
+    { "key": "field_cta_form", "label": "Contact Form 7", "name": "cta_form", "type": "post_object", "post_type": ["wpcf7_contact_form"], "return_format": "id", "allow_null": 1, "multiple": 0, "instructions": "Select a Contact Form 7 form to render below the title. If empty, the button below will be used instead." },
+    { "key": "field_cta_button", "label": "Button (fallback if no form selected)", "name": "cta_button", "type": "link" }
   ],
   "location": [
     [{ "param": "block", "operator": "==", "value": "acf/cta" }]

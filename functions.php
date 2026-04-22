@@ -46,10 +46,10 @@ function aetherfield_setup() {
 		*/
 	add_theme_support( 'post-thumbnails' );
 
-	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus(
 		array(
-			'menu-1' => esc_html__( 'Primary', 'aetherfield' ),
+			'primary' => esc_html__( 'Primary (Header)', 'aetherfield' ),
+			'footer'  => esc_html__( 'Footer', 'aetherfield' ),
 		)
 	);
 
@@ -192,6 +192,18 @@ require get_template_directory() . '/inc/options.php';
  * Register ACF blocks and related filters.
  */
 require get_template_directory() . '/inc/blocks.php';
+
+/**
+ * Navigation menu filters and fallbacks.
+ */
+require get_template_directory() . '/inc/nav.php';
+
+/**
+ * Contact Form 7 integration tweaks (loaded only if the plugin is active).
+ */
+if ( defined( 'WPCF7_VERSION' ) ) {
+	require get_template_directory() . '/inc/cf7.php';
+}
 
 /**
  * Custom template tags for this theme.

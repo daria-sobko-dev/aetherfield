@@ -12,13 +12,13 @@ $footer_logo  = get_template_directory_uri() . '/assets/images/logo-big.svg';
 	<footer id="colophon" class="site-footer">
 		<div class="site-footer__inner">
 			<div class="footer__top">
-				<ul class="footer__links">
-					<li><a href="#"><?= esc_html__( 'Product', 'aetherfield' ) ?></a></li>
-					<li><a href="#"><?= esc_html__( 'Journal', 'aetherfield' ) ?></a></li>
-					<li><a href="#"><?= esc_html__( 'About', 'aetherfield' ) ?></a></li>
-					<li><a href="#"><?= esc_html__( 'Careers', 'aetherfield' ) ?></a></li>
-					<li><a href="#"><?= esc_html__( 'Get started', 'aetherfield' ) ?></a></li>
-				</ul>
+				<?php wp_nav_menu( array(
+					'theme_location' => 'footer',
+					'menu_class'     => 'footer__links',
+					'container'      => false,
+					'depth'          => 1,
+					'fallback_cb'    => 'aetherfield_footer_fallback_menu',
+				) ); ?>
 				<p class="footer__copy"><?= esc_html( sprintf( __( '© %d  ·  All rights reserved', 'aetherfield' ), (int) date( 'Y' ) ) ) ?></p>
 			</div>
 

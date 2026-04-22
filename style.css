@@ -308,9 +308,12 @@ ul, ol {
 	gap: 4px;
 }
 
-.nav__cta img {
+.nav__cta::after {
+	content: '';
+	display: inline-block;
 	width: 9px;
 	height: 11.225px;
+	background: url('assets/images/arrow.svg') no-repeat center / contain;
 	transform: rotate(-90deg);
 }
 
@@ -522,9 +525,6 @@ ul, ol {
 		align-items: center;
 		background: #000;
 		gap: 10px;
-	}
-
-	.nav__cta span {
 		font-family: var(--font-mono);
 		font-size: 20px;
 		font-weight: 500;
@@ -532,7 +532,7 @@ ul, ol {
 		color: #fff;
 	}
 
-	.nav__cta img {
+	.nav__cta::after {
 		display: none;
 	}
 

@@ -5,9 +5,10 @@
  * @package Aetherfield
  */
 
-$hero_image = get_field( 'blog_archive_hero_image', 'option' );
-$cta_title  = get_field( 'blog_archive_cta_title', 'option' );
-$cta_button = get_field( 'blog_archive_cta_button', 'option' );
+$hero_image  = get_field( 'blog_archive_hero_image', 'option' );
+$cta_title   = get_field( 'blog_archive_cta_title', 'option' );
+$cta_form    = get_field( 'blog_archive_cta_form', 'option' );
+$cta_button  = get_field( 'blog_archive_cta_button', 'option' );
 
 get_header();
 ?>
@@ -49,18 +50,12 @@ get_header();
 			</div>
 		</section>
 
-		<?php if ( $cta_title ) { ?>
-			<section class="section section--cta" aria-labelledby="blog-archive-cta-title">
-				<div class="section__inner">
-					<h2 id="blog-archive-cta-title" class="h-section cta__title">
-						<?= esc_html( $cta_title ) ?>
-					</h2>
-					<?php if ( $cta_button ) { ?>
-						<a class="btn btn--primary" href="<?= esc_url( $cta_button['url'] ) ?>"<?= ! empty( $cta_button['target'] ) ? ' target="' . esc_attr( $cta_button['target'] ) . '"' : '' ?>><?= esc_html( $cta_button['title'] ) ?></a>
-					<?php } ?>
-				</div>
-			</section>
-		<?php } ?>
+		<?php get_template_part( 'template-parts/cta', null, array(
+			'title'    => $cta_title,
+			'form_id'  => $cta_form,
+			'button'   => $cta_button,
+			'title_id' => 'blog-archive-cta-title',
+		) ); ?>
 
 	</main>
 

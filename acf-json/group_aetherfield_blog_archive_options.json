@@ -4,7 +4,8 @@
   "fields": [
     { "key": "field_blog_archive_hero_image", "label": "Hero image", "name": "blog_archive_hero_image", "type": "image", "return_format": "array", "preview_size": "medium", "instructions": "Large banner image shown at the top of the blog archive page." },
     { "key": "field_blog_archive_cta_title", "label": "CTA title", "name": "blog_archive_cta_title", "type": "text", "default_value": "Subscribe to Aetherfield Journal" },
-    { "key": "field_blog_archive_cta_button", "label": "CTA button", "name": "blog_archive_cta_button", "type": "link" }
+    { "key": "field_blog_archive_cta_form", "label": "CTA — Contact Form 7", "name": "blog_archive_cta_form", "type": "post_object", "post_type": ["wpcf7_contact_form"], "return_format": "id", "allow_null": 1, "multiple": 0, "instructions": "Select a form to show instead of the CTA button. If empty, the button below is used." },
+    { "key": "field_blog_archive_cta_button", "label": "CTA button (fallback)", "name": "blog_archive_cta_button", "type": "link" }
   ],
   "location": [
     [{ "param": "options_page", "operator": "==", "value": "aetherfield-blog-archive" }]
