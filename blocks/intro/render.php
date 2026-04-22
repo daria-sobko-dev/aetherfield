@@ -15,7 +15,7 @@ $image = get_field( 'intro_image' );
 <section class="section section--intro" aria-labelledby="intro-title">
 	<div class="section__inner">
 		<div class="intro__content">
-			<div class="intro__header-text">
+			<div class="intro__top">
 				<div class="intro__heading">
 					<h1 id="intro-title" class="h-display-1"><?= esc_html( $heading_1 ) ?></h1>
 					<span class="h-display-2"><?= esc_html( $heading_2 ) ?></span>

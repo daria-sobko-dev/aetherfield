@@ -21,10 +21,10 @@ while ( have_posts() ) {
 
 	<main id="primary" class="site-main">
 
-		<header class="section section--article-header" aria-labelledby="article-title">
-			<div class="section__inner article-header__inner">
+		<section class="section section--article-hero" aria-labelledby="article-title">
+			<div class="section__inner article-hero__inner">
 				<?php if ( $topic || $reading_time ) { ?>
-					<div class="article-header__meta">
+					<div class="article-hero__meta">
 						<?php if ( $topic ) { ?>
 							<span><?= esc_html( $topic ) ?></span>
 						<?php } ?>
@@ -36,9 +36,9 @@ while ( have_posts() ) {
 						<?php } ?>
 					</div>
 				<?php } ?>
-				<h1 id="article-title" class="h-display-2 article-header__title"><?= esc_html( get_the_title() ) ?></h1>
+				<h1 id="article-title" class="h-display-2 article-hero__title"><?= esc_html( get_the_title() ) ?></h1>
 			</div>
-		</header>
+		</section>
 
 		<?php if ( $hero_image ) { ?>
 			<section class="section section--article-hero" aria-hidden="true">
@@ -87,7 +87,7 @@ while ( have_posts() ) {
 			?>
 			<section class="section section--related" aria-labelledby="related-title">
 				<div class="section__inner related__inner">
-					<div class="related__header">
+					<div class="related__top">
 						<h2 id="related-title" class="h-display-2 related__title">
 							<?= esc_html__( 'Recent articles', 'aetherfield' ) ?>
 						</h2>

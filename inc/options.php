@@ -20,4 +20,12 @@ function aetherfield_register_options_pages() {
 		'parent_slug' => 'edit.php?post_type=blog',
 		'capability'  => 'edit_posts',
 	) );
+
+	acf_add_options_sub_page( array(
+		'page_title'  => __( 'Careers Settings', 'aetherfield' ),
+		'menu_title'  => __( 'Careers Settings', 'aetherfield' ),
+		'menu_slug'   => 'aetherfield-careers-settings',
+		'parent_slug' => 'edit.php?post_type=job',
+		'capability'  => 'edit_posts',
+	) );
 }

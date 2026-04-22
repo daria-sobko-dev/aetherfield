@@ -30,7 +30,7 @@ $button = get_field( 'features_button' );
 							$item_description = $item['description'];
 							?>
 							<li class="feature-list__item">
-								<div class="feature-list__header">
+								<div class="feature-list__top">
 									<h3 class="h-card feature-list__title"><?= esc_html( $item_title ) ?></h3>
 									<span class="caption"><?= esc_html( $item_number ) ?></span>
 								</div>

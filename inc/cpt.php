@@ -36,6 +36,31 @@ function aetherfield_register_post_types() {
 		'show_in_rest'  => true,
 		'rewrite'       => array( 'slug' => 'blog' ),
 	) );
+
+	register_post_type( 'job', array(
+		'label'         => __( 'Jobs', 'aetherfield' ),
+		'labels'        => array(
+			'name'               => __( 'Jobs', 'aetherfield' ),
+			'singular_name'      => __( 'Job', 'aetherfield' ),
+			'add_new'            => __( 'Add new', 'aetherfield' ),
+			'add_new_item'       => __( 'Add new job', 'aetherfield' ),
+			'edit_item'          => __( 'Edit job', 'aetherfield' ),
+			'new_item'           => __( 'New job', 'aetherfield' ),
+			'view_item'          => __( 'View job', 'aetherfield' ),
+			'search_items'       => __( 'Search jobs', 'aetherfield' ),
+			'not_found'          => __( 'No jobs found', 'aetherfield' ),
+			'not_found_in_trash' => __( 'No jobs found in trash', 'aetherfield' ),
+			'all_items'          => __( 'All jobs', 'aetherfield' ),
+			'menu_name'          => __( 'Jobs', 'aetherfield' ),
+		),
+		'public'        => true,
+		'has_archive'   => 'careers',
+		'menu_icon'     => 'dashicons-businessperson',
+		'menu_position' => 6,
+		'supports'      => array( 'title', 'editor' ),
+		'show_in_rest'  => true,
+		'rewrite'       => array( 'slug' => 'careers', 'with_front' => false ),
+	) );
 }
 
 /**

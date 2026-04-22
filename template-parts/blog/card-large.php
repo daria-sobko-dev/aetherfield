@@ -26,7 +26,7 @@ $topic        = ( ! is_wp_error( $topics ) && ! empty( $topics ) ) ? $topics[0]-
 			</div>
 		<?php } ?>
 		<div class="blog-card__text">
-			<div class="blog-card__header">
+			<div class="blog-card__top">
 				<h3 class="h-card blog-card__title"><?= esc_html( $title ) ?></h3>
 				<?php if ( $topic || $reading_time ) { ?>
 					<div class="blog-card__details">

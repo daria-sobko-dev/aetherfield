@@ -1,0 +1,22 @@
+{
+  "key": "group_aetherfield_mission",
+  "title": "Mission block",
+  "fields": [
+    { "key": "field_mission_image_desktop", "label": "Image — desktop", "name": "mission_image_desktop", "type": "image", "return_format": "array", "preview_size": "medium", "instructions": "Shown on screens wider than 1024px." },
+    { "key": "field_mission_image_tablet", "label": "Image — tablet (optional)", "name": "mission_image_tablet", "type": "image", "return_format": "array", "preview_size": "medium", "instructions": "Shown from 769px to 1024px. Falls back to desktop image if empty." },
+    { "key": "field_mission_image_mobile", "label": "Image — mobile (optional)", "name": "mission_image_mobile", "type": "image", "return_format": "array", "preview_size": "medium", "instructions": "Shown on screens 768px and below. Falls back to tablet, then desktop image if empty." },
+    { "key": "field_mission_caption", "label": "Caption", "name": "mission_caption", "type": "text", "default_value": "Our mission" },
+    { "key": "field_mission_heading", "label": "Heading", "name": "mission_heading", "type": "textarea", "rows": 3 },
+    { "key": "field_mission_button", "label": "Button", "name": "mission_button", "type": "link", "return_format": "array" }
+  ],
+  "location": [
+    [{ "param": "block", "operator": "==", "value": "acf/mission" }]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "active": true,
+  "show_in_rest": 0
+}

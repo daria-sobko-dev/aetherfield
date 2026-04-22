@@ -1,0 +1,20 @@
+{
+  "key": "group_aetherfield_founder",
+  "title": "Founder block",
+  "fields": [
+    { "key": "field_founder_image", "label": "Portrait", "name": "founder_image", "type": "image", "return_format": "array", "preview_size": "medium" },
+    { "key": "field_founder_caption", "label": "Caption", "name": "founder_caption", "type": "text", "default_value": "Founder's story" },
+    { "key": "field_founder_name", "label": "Name", "name": "founder_name", "type": "text" },
+    { "key": "field_founder_bio", "label": "Bio", "name": "founder_bio", "type": "textarea", "rows": 6 }
+  ],
+  "location": [
+    [{ "param": "block", "operator": "==", "value": "acf/founder" }]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "active": true,
+  "show_in_rest": 0
+}

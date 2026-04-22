@@ -62,7 +62,7 @@
 	border-bottom: 1px solid var(--color-divider);
 }
 
-.feature-list__header {
+.feature-list__top {
 	display: flex;
 	align-items: flex-start;
 	gap: 16px;

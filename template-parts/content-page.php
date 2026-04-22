@@ -10,9 +10,9 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
+	<div class="entry-top">
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-	</header><!-- .entry-header -->
+	</div><!-- .entry-top -->
 
 	<?php aetherfield_post_thumbnail(); ?>
 
@@ -30,7 +30,7 @@
 	</div><!-- .entry-content -->
 
 	<?php if ( get_edit_post_link() ) : ?>
-		<footer class="entry-footer">
+		<div class="entry-bottom">
 			<?php
 			edit_post_link(
 				sprintf(
@@ -49,6 +49,6 @@
 				'</span>'
 			);
 			?>
-		</footer><!-- .entry-footer -->
+		</div><!-- .entry-bottom -->
 	<?php endif; ?>
 </article><!-- #post-<?php the_ID(); ?> -->

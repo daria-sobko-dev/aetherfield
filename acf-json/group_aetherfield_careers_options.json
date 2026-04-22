@@ -1,0 +1,22 @@
+{
+  "key": "group_aetherfield_careers_options",
+  "title": "Careers — Open Application",
+  "fields": [
+    { "key": "field_careers_heading_1", "label": "Heading line 1 (serif)", "name": "careers_heading_1", "type": "text", "default_value": "Careers at", "instructions": "First line of the /careers page title, rendered in Source Serif Pro." },
+    { "key": "field_careers_heading_2", "label": "Heading line 2 (display)", "name": "careers_heading_2", "type": "text", "default_value": "Aetherfield", "instructions": "Second line of the /careers page title, rendered in Radio Canada Big." },
+    { "key": "field_careers_open_title", "label": "Open application title", "name": "careers_open_title", "type": "text", "default_value": "Open application" },
+    { "key": "field_careers_open_meta", "label": "Open application meta", "name": "careers_open_meta", "type": "text", "default_value": "Full-time · Denver, CO" },
+    { "key": "field_careers_open_description", "label": "Open application description", "name": "careers_open_description", "type": "textarea", "rows": 3, "default_value": "Don't see your role available? Apply for an open application!" },
+    { "key": "field_careers_open_button", "label": "Open application button", "name": "careers_open_button", "type": "link", "return_format": "array" }
+  ],
+  "location": [
+    [{ "param": "options_page", "operator": "==", "value": "aetherfield-careers-settings" }]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "active": true,
+  "show_in_rest": 0
+}

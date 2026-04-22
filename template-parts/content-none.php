@@ -10,9 +10,9 @@
 ?>
 
 <section class="no-results not-found">
-	<header class="page-header">
+	<div class="page-top">
 		<h1 class="page-title"><?php esc_html_e( 'Nothing Found', 'aetherfield' ); ?></h1>
-	</header><!-- .page-header -->
+	</div><!-- .page-top -->
 
 	<div class="page-content">
 		<?php

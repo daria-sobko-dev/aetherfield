@@ -1,0 +1,31 @@
+{
+  "key": "group_aetherfield_team",
+  "title": "Team block",
+  "fields": [
+    { "key": "field_team_heading", "label": "Heading", "name": "team_heading", "type": "text", "default_value": "Meet the team" },
+    {
+      "key": "field_team_members",
+      "label": "Team members",
+      "name": "team_members",
+      "type": "repeater",
+      "min": 1,
+      "layout": "table",
+      "button_label": "Add member",
+      "sub_fields": [
+        { "key": "field_team_member_name", "label": "Name", "name": "name", "type": "text" },
+        { "key": "field_team_member_title", "label": "Title", "name": "title", "type": "text" },
+        { "key": "field_team_member_email", "label": "Email", "name": "email", "type": "email" }
+      ]
+    }
+  ],
+  "location": [
+    [{ "param": "block", "operator": "==", "value": "acf/team" }]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "active": true,
+  "show_in_rest": 0
+}

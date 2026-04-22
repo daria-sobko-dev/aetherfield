@@ -81,7 +81,7 @@
 	width: 100%;
 }
 
-.blog-card__header {
+.blog-card__top {
 	display: flex;
 	flex-direction: column;
 	gap: 8px;

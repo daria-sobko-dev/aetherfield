@@ -41,6 +41,10 @@ function aetherfield_register_blocks() {
 		'blog'        => 'Blog',
 		'testimonial' => 'Testimonial',
 		'cta'         => 'Call to action',
+		'mission'     => 'Mission',
+		'principles'  => 'Principles',
+		'founder'     => 'Founder',
+		'team'        => 'Team',
 	);
 
 	foreach ( $blocks as $slug => $title ) {
@@ -85,22 +89,33 @@ add_filter( 'acf/settings/load_json', function ( $paths ) {
 } );
 
 /**
- * Restrict Home template to only use Aetherfield blocks (no core blocks).
+ * Restrict Aetherfield page templates to theme blocks only (no core blocks).
  */
 add_filter( 'allowed_block_types_all', function ( $allowed, $context ) {
 	if ( ! $context->post ) {
 		return $allowed;
 	}
-	if ( get_page_template_slug( $context->post ) !== 'page-home.php' ) {
-		return $allowed;
-	}
-	return array(
-		'acf/intro',
-		'acf/features',
-		'acf/values',
-		'acf/case-study',
-		'acf/blog',
-		'acf/testimonial',
-		'acf/cta',
+
+	$template = get_page_template_slug( $context->post );
+
+	$templates = array(
+		'page-home.php'  => array(
+			'acf/intro',
+			'acf/features',
+			'acf/values',
+			'acf/case-study',
+			'acf/blog',
+			'acf/testimonial',
+			'acf/cta',
+		),
+		'page-about.php' => array(
+			'acf/mission',
+			'acf/principles',
+			'acf/founder',
+			'acf/team',
+			'acf/cta',
+		),
 	);
+
+	return $templates[ $template ] ?? $allowed;
 }, 10, 2 );

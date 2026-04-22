@@ -1,0 +1,160 @@
+/* ==========================================================================
+   Founder block (Founder's story section)
+   ========================================================================== */
+.section--founder {
+	padding: 0 20px 120px;
+}
+
+.section--founder .section__inner {
+	max-width: 1280px;
+}
+
+.founder__inner {
+	position: relative;
+	display: flex;
+	gap: 16px;
+	align-items: center;
+}
+
+.founder__sticker {
+	position: absolute;
+	top: -75px;
+	left: -36px;
+	width: 298px;
+	aspect-ratio: 298 / 147;
+	z-index: 2;
+	pointer-events: none;
+	transform: rotate(-9deg);
+	transform-origin: center;
+}
+
+.founder__sticker img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+.founder__image {
+	flex: 0 0 612px;
+	min-width: 0;
+	aspect-ratio: 612 / 700;
+}
+
+.founder__image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.founder__quote {
+	flex: 1 0 0;
+	min-width: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 56px;
+	align-items: center;
+	justify-content: center;
+}
+
+.founder__title {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	width: 100%;
+	max-width: 442px;
+	padding: 0 20px;
+}
+
+.founder__caption {
+	color: var(--color-subtle);
+}
+
+.founder__name {
+	font-family: var(--font-display);
+	font-size: 56px;
+	font-weight: 500;
+	line-height: 1;
+	letter-spacing: -1.68px;
+	color: #000;
+	width: 100%;
+}
+
+.founder__bio {
+	color: #000;
+	width: 100%;
+	max-width: 442px;
+	padding: 0 20px;
+}
+
+@media (max-width: 1024px) {
+	.section--founder {
+		padding: 0 20px 80px;
+	}
+
+	.founder__sticker {
+		top: -79px;
+		left: -63px;
+		width: 235px;
+		aspect-ratio: 298 / 147;
+		height: auto;
+	}
+
+	.founder__image {
+		flex: 1 0 0;
+		aspect-ratio: 372 / 425.49;
+	}
+
+	.founder__title,
+	.founder__bio {
+		max-width: 332px;
+	}
+
+	.founder__name {
+		font-size: 48px;
+		letter-spacing: -1.44px;
+	}
+}
+
+@media (max-width: 768px) {
+	.section--founder {
+		padding: 0 20px 40px;
+	}
+
+	.founder__inner {
+		flex-direction: column;
+		gap: 16px;
+	}
+
+	.founder__sticker {
+		display: none;
+	}
+
+	.founder__image {
+		width: 100%;
+		flex: 0 0 auto;
+		aspect-ratio: 335 / 378;
+	}
+
+	.founder__quote {
+		flex: 0 0 auto;
+		width: 100%;
+		gap: 32px;
+		padding: 0;
+	}
+
+	.founder__title,
+	.founder__bio {
+		max-width: none;
+		padding: 0;
+	}
+
+	.founder__bio {
+		font-size: 18px;
+		letter-spacing: -0.54px;
+	}
+
+	.founder__name {
+		font-size: 32px;
+		letter-spacing: -0.96px;
+	}
+}
