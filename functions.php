@@ -117,23 +117,36 @@ function aetherfield_content_width() {
 add_action( 'after_setup_theme', 'aetherfield_content_width', 0 );
 
 /**
+ * Cache-busting version for a theme-local asset, based on its file mtime.
+ * Auto-busts the cache on every file change; falls back to the theme version.
+ *
+ * @param string $relative Path relative to the theme root (e.g. '/style.css').
+ * @return string|int
+ */
+function aetherfield_asset_ver( $relative ) {
+	$path = get_template_directory() . $relative;
+	return file_exists( $path ) ? filemtime( $path ) : _S_VERSION;
+}
+
+/**
  * Enqueue scripts and styles.
  */
 function aetherfield_scripts() {
+	// Self-hosted fonts (Geist Mono, Radio Canada Big, Source Serif Pro) — GDPR-safe, no Google CDN.
 	wp_enqueue_style(
 		'aetherfield-fonts',
-		'https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Radio+Canada+Big:wght@400;500&family=Source+Serif+Pro:ital,wght@0,400;1,400&display=swap',
+		get_template_directory_uri() . '/assets/css/fonts.css',
 		array(),
-		null
+		aetherfield_asset_ver( '/assets/css/fonts.css' )
 	);
 
-	wp_enqueue_style( 'aetherfield-style', get_stylesheet_uri(), array(), _S_VERSION );
+	wp_enqueue_style( 'aetherfield-style', get_stylesheet_uri(), array(), aetherfield_asset_ver( '/style.css' ) );
 
 	wp_enqueue_script(
 		'aetherfield-navigation',
 		get_template_directory_uri() . '/js/navigation.js',
 		array(),
-		_S_VERSION,
+		aetherfield_asset_ver( '/js/navigation.js' ),
 		array(
 			'in_footer' => true,
 			'strategy'  => 'defer',
@@ -145,13 +158,13 @@ function aetherfield_scripts() {
 			'aetherfield-archive-blog',
 			get_template_directory_uri() . '/assets/css/archive-blog.css',
 			array(),
-			_S_VERSION
+			aetherfield_asset_ver( '/assets/css/archive-blog.css' )
 		);
 		wp_enqueue_style(
 			'aetherfield-block-cta',
 			get_template_directory_uri() . '/blocks/cta/style.css',
 			array(),
-			_S_VERSION
+			aetherfield_asset_ver( '/blocks/cta/style.css' )
 		);
 	}
 
@@ -160,7 +173,7 @@ function aetherfield_scripts() {
 			'aetherfield-single-blog',
 			get_template_directory_uri() . '/assets/css/single-blog.css',
 			array(),
-			_S_VERSION
+			aetherfield_asset_ver( '/assets/css/single-blog.css' )
 		);
 	}
 
@@ -169,7 +182,7 @@ function aetherfield_scripts() {
 			'aetherfield-archive-job',
 			get_template_directory_uri() . '/assets/css/archive-job.css',
 			array(),
-			_S_VERSION
+			aetherfield_asset_ver( '/assets/css/archive-job.css' )
 		);
 	}
 
@@ -178,7 +191,7 @@ function aetherfield_scripts() {
 			'aetherfield-single-job',
 			get_template_directory_uri() . '/assets/css/single-job.css',
 			array(),
-			_S_VERSION
+			aetherfield_asset_ver( '/assets/css/single-job.css' )
 		);
 	}
 }
@@ -213,6 +226,12 @@ require get_template_directory() . '/inc/performance.php';
  * Schema.org JSON-LD for single posts.
  */
 require get_template_directory() . '/inc/schema.php';
+
+/**
+ * SEO head output: meta description, Open Graph, Twitter cards, canonical,
+ * and site-wide Organization + WebSite JSON-LD.
+ */
+require get_template_directory() . '/inc/seo.php';
 
 /**
  * Navigation menu filters and fallbacks.

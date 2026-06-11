@@ -19,7 +19,7 @@ while ( have_posts() ) {
 	$author       = get_field( 'author' ) ?: get_the_author();
 	?>
 
-	<main id="primary" class="site-main">
+	<main id="primary" class="site-main" tabindex="-1">
 
 		<section class="section section--article-hero" aria-labelledby="article-title">
 			<div class="section__inner article-hero__inner">

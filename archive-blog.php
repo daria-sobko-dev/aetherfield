@@ -13,7 +13,7 @@ $cta_button  = get_field( 'blog_archive_cta_button', 'option' );
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
+	<main id="primary" class="site-main" tabindex="-1">
 
 		<?php if ( $hero_image ) { ?>
 			<section class="section section--blog-hero" aria-hidden="true">
@@ -51,10 +51,11 @@ get_header();
 		</section>
 
 		<?php get_template_part( 'template-parts/cta', null, array(
-			'title'    => $cta_title,
-			'form_id'  => $cta_form,
-			'button'   => $cta_button,
-			'title_id' => 'blog-archive-cta-title',
+			'title'      => $cta_title,
+			'form_id'    => $cta_form,
+			'button'     => $cta_button,
+			'title_id'   => 'blog-archive-cta-title',
+			'section_id' => 'subscribe',
 		) ); ?>
 
 	</main>

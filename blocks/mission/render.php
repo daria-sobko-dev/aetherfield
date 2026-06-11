@@ -17,14 +17,14 @@ $button = get_field( 'mission_button' );
 $image_tablet_url = $image_tablet ? $image_tablet['url'] : ( $image_desktop ? $image_desktop['url'] : '' );
 $image_mobile_url = $image_mobile ? $image_mobile['url'] : $image_tablet_url;
 ?>
-<section class="section section--mission" aria-labelledby="mission-title">
+<section id="mission" class="section section--mission" aria-labelledby="mission-title">
 	<div class="section__inner mission__inner">
 		<?php if ( $image_desktop ) { ?>
 			<div class="mission__image">
 				<picture>
 					<source media="(max-width: 768px)" srcset="<?= esc_url( $image_mobile_url ) ?>">
 					<source media="(max-width: 1024px)" srcset="<?= esc_url( $image_tablet_url ) ?>">
-					<img decoding="async" fetchpriority="high" src="<?= esc_url( $image_desktop['url'] ) ?>" alt="<?= esc_attr( $image_desktop['alt'] ) ?>">
+					<img decoding="async" fetchpriority="high"<?= aetherfield_img_dimensions( $image_desktop ) ?> src="<?= esc_url( $image_desktop['url'] ) ?>" alt="<?= esc_attr( $image_desktop['alt'] ) ?>">
 				</picture>
 			</div>
 		<?php } ?>

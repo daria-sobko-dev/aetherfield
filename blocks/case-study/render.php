@@ -12,12 +12,12 @@ $title = get_field( 'case_title' );
 $description = get_field( 'case_description' );
 $button = get_field( 'case_button' );
 ?>
-<section class="section section--case-study" aria-labelledby="case-title">
+<section id="case-study" class="section section--case-study" aria-labelledby="case-title">
 	<div class="section__inner">
 		<div class="case-study__module">
 			<?php if ( $image ) { ?>
 				<div class="case-study__image">
-					<img loading="lazy" decoding="async" src="<?= esc_url( $image['url'] ) ?>" alt="<?= esc_attr( $image['alt'] ) ?>">
+					<img loading="lazy" decoding="async"<?= aetherfield_img_dimensions( $image ) ?> src="<?= esc_url( $image['url'] ) ?>" alt="<?= esc_attr( $image['alt'] ) ?>">
 				</div>
 			<?php } ?>
 			<div class="case-study__content">

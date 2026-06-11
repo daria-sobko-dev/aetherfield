@@ -10,7 +10,7 @@ defined( 'ABSPATH' ) || exit;
 $heading = get_field( 'team_heading' );
 $members = get_field( 'team_members' );
 ?>
-<section class="section section--team" aria-labelledby="team-title">
+<section id="team" class="section section--team" aria-labelledby="team-title">
 	<div class="section__inner team__inner">
 		<?php if ( $heading ) { ?>
 			<h2 id="team-title" class="team__title"><?= esc_html( $heading ) ?></h2>

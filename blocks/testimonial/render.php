@@ -13,12 +13,12 @@ $name = get_field( 'testimonial_name' );
 $role = get_field( 'testimonial_role' );
 $quote_icon_url = get_template_directory_uri() . '/blocks/testimonial/quote.svg';
 ?>
-<section class="section section--testimonial" aria-labelledby="testimonial-title">
+<section id="testimonial" class="section section--testimonial" aria-labelledby="testimonial-title">
 	<div class="section__inner">
 		<div class="section__content testimonial__content">
 			<?php if ( $image ) { ?>
 				<div class="testimonial__image">
-					<img loading="lazy" decoding="async" src="<?= esc_url( $image['url'] ) ?>" alt="<?= esc_attr( $image['alt'] ) ?>">
+					<img loading="lazy" decoding="async"<?= aetherfield_img_dimensions( $image ) ?> src="<?= esc_url( $image['url'] ) ?>" alt="<?= esc_attr( $image['alt'] ) ?>">
 				</div>
 			<?php } ?>
 			<div class="testimonial__quote">

@@ -14,7 +14,7 @@ $bio = get_field( 'founder_bio' );
 $sticker_path = get_template_directory() . '/blocks/founder/sticker.svg';
 $sticker_url = get_template_directory_uri() . '/blocks/founder/sticker.svg';
 ?>
-<section class="section section--founder" aria-labelledby="founder-title">
+<section id="founder" class="section section--founder" aria-labelledby="founder-title">
 	<div class="section__inner founder__inner">
 		<?php if ( file_exists( $sticker_path ) ) { ?>
 			<div class="founder__sticker" aria-hidden="true">
@@ -23,7 +23,7 @@ $sticker_url = get_template_directory_uri() . '/blocks/founder/sticker.svg';
 		<?php } ?>
 		<?php if ( $image ) { ?>
 			<div class="founder__image">
-				<img loading="lazy" decoding="async" src="<?= esc_url( $image['url'] ) ?>" alt="<?= esc_attr( $image['alt'] ) ?>">
+				<img loading="lazy" decoding="async"<?= aetherfield_img_dimensions( $image ) ?> src="<?= esc_url( $image['url'] ) ?>" alt="<?= esc_attr( $image['alt'] ) ?>">
 			</div>
 		<?php } ?>
 		<div class="founder__quote">

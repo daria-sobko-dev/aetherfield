@@ -19,7 +19,7 @@ while ( have_posts() ) {
 	$sticker_url     = get_template_directory_uri() . '/assets/images/sticker-careers.svg';
 	?>
 
-	<main id="primary" class="site-main">
+	<main id="primary" class="site-main" tabindex="-1">
 
 		<section class="section section--job" aria-labelledby="job-title">
 			<div class="section__inner job__inner">

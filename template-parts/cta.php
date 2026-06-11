@@ -5,22 +5,24 @@
  * Pass args via get_template_part(..., $args):
  *   - title    (string) Heading text
  *   - form_id  (int)    Contact Form 7 post ID. If set, renders the form instead of the button.
- *   - button   (array)  ACF link field (url, title, target). Fallback when no form is selected.
- *   - title_id (string) Optional id for the h2 (used by aria-labelledby).
+ *   - button     (array)  ACF link field (url, title, target). Fallback when no form is selected.
+ *   - title_id   (string) Optional id for the h2 (used by aria-labelledby).
+ *   - section_id (string) Optional id for the <section> (scroll-anchor target).
  *
  * @package Aetherfield
  */
 
-$title    = $args['title'] ?? '';
-$form_id  = $args['form_id'] ?? 0;
-$button   = $args['button'] ?? null;
-$title_id = $args['title_id'] ?? 'cta-title';
+$title      = $args['title'] ?? '';
+$form_id    = $args['form_id'] ?? 0;
+$button     = $args['button'] ?? null;
+$title_id   = $args['title_id'] ?? 'cta-title';
+$section_id = $args['section_id'] ?? '';
 
 if ( ! $title ) {
 	return;
 }
 ?>
-<section class="section section--cta" aria-labelledby="<?= esc_attr( $title_id ) ?>">
+<section<?= $section_id ? ' id="' . esc_attr( $section_id ) . '"' : '' ?> class="section section--cta" aria-labelledby="<?= esc_attr( $title_id ) ?>">
 	<div class="section__inner">
 		<h2 id="<?= esc_attr( $title_id ) ?>" class="h-section cta__title">
 			<?= esc_html( $title ) ?>

@@ -14,7 +14,7 @@ $button_1 = get_field( 'intro_button_1' );
 $button_2 = get_field( 'intro_button_2' );
 $image = get_field( 'intro_image' );
 ?>
-<section class="section section--intro" aria-labelledby="intro-title">
+<section id="intro" class="section section--intro" aria-labelledby="intro-title">
 	<div class="section__inner">
 		<div class="intro__content">
 			<div class="intro__top">
@@ -37,7 +37,7 @@ $image = get_field( 'intro_image' );
 		</div>
 		<?php if ( $image ) { ?>
 			<div class="intro__image">
-				<img decoding="async" fetchpriority="high" src="<?= esc_url( $image['url'] ) ?>" alt="<?= esc_attr( $image['alt'] ) ?>">
+				<img decoding="async" fetchpriority="high"<?= aetherfield_img_dimensions( $image ) ?> src="<?= esc_url( $image['url'] ) ?>" alt="<?= esc_attr( $image['alt'] ) ?>">
 			</div>
 		<?php } ?>
 	</div>

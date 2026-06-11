@@ -10,7 +10,7 @@ defined( 'ABSPATH' ) || exit;
 $heading = get_field( 'principles_heading' );
 $items = get_field( 'principles_items' );
 ?>
-<section class="section section--principles" aria-labelledby="principles-title">
+<section id="principles" class="section section--principles" aria-labelledby="principles-title">
 	<div class="section__inner principles__inner">
 		<?php if ( $heading ) { ?>
 			<div class="principles__top">
@@ -27,7 +27,7 @@ $items = get_field( 'principles_items' );
 					<article class="principle-card" aria-label="<?= esc_attr( $v_title ) ?>">
 						<?php if ( $v_icon ) { ?>
 							<div class="principle-card__icon" aria-hidden="true">
-								<img loading="lazy" decoding="async" src="<?= esc_url( $v_icon['url'] ) ?>" alt="">
+								<img loading="lazy" decoding="async"<?= aetherfield_img_dimensions( $v_icon ) ?> src="<?= esc_url( $v_icon['url'] ) ?>" alt="">
 							</div>
 						<?php } ?>
 						<div class="principle-card__content">

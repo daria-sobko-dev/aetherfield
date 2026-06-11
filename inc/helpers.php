@@ -50,3 +50,19 @@ function aetherfield_reading_time( $post_id = null ) {
 	/* translators: %d: reading time in minutes */
 	return sprintf( _n( '%d min', '%d min', $minutes, 'aetherfield' ), $minutes );
 }
+
+/**
+ * Build width/height attributes from an ACF image array for CLS stability.
+ *
+ * Returns a leading-space attribute string, or '' when dimensions are unknown
+ * (e.g. SVG icons), so no invalid width="0" is ever emitted.
+ *
+ * @param mixed $image ACF image array (expects 'width'/'height' keys).
+ * @return string
+ */
+function aetherfield_img_dimensions( $image ) {
+	if ( is_array( $image ) && ! empty( $image['width'] ) && ! empty( $image['height'] ) ) {
+		return ' width="' . (int) $image['width'] . '" height="' . (int) $image['height'] . '"';
+	}
+	return '';
+}

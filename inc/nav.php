@@ -8,15 +8,20 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Copy a menu item's CSS classes onto its <a> tag so styles like `.nav__cta`
+ * Move a menu item's CSS classes onto its <a> tag so styles like `.nav__cta`
  * keep working when authored via Appearance → Menus → CSS Classes (Screen
  * Options must be enabled to see the field).
+ *
+ * The class is moved (not copied): the paired `nav_menu_css_class` filter below
+ * strips it from the <li> so selectors like `.nav__cta::after` don't render
+ * twice (once on the <li>, once on the <a>).
  */
-add_filter( 'nav_menu_link_attributes', function ( $atts, $item, $args ) {
-	$copyable = array( 'nav__cta' );
-	$classes  = (array) $item->classes;
+const AETHERFIELD_NAV_MOVABLE_CLASSES = array( 'nav__cta' );
 
-	foreach ( $copyable as $class ) {
+add_filter( 'nav_menu_link_attributes', function ( $atts, $item, $args ) {
+	$classes = (array) $item->classes;
+
+	foreach ( AETHERFIELD_NAV_MOVABLE_CLASSES as $class ) {
 		if ( in_array( $class, $classes, true ) ) {
 			$atts['class'] = trim( ( $atts['class'] ?? '' ) . ' ' . $class );
 		}
@@ -24,6 +29,10 @@ add_filter( 'nav_menu_link_attributes', function ( $atts, $item, $args ) {
 
 	return $atts;
 }, 10, 3 );
+
+add_filter( 'nav_menu_css_class', function ( $classes, $item ) {
+	return array_values( array_diff( (array) $classes, AETHERFIELD_NAV_MOVABLE_CLASSES ) );
+}, 10, 2 );
 
 /**
  * Fallback menu shown in the header when no menu is assigned to the

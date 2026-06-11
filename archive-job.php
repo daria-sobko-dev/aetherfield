@@ -15,7 +15,7 @@ $open_desc   = get_field( 'careers_open_description', 'option' );
 $open_button = get_field( 'careers_open_button', 'option' );
 ?>
 
-	<main id="primary" class="site-main">
+	<main id="primary" class="site-main" tabindex="-1">
 
 		<section class="section section--careers" aria-labelledby="careers-title">
 			<div class="section__inner careers__inner">
@@ -34,6 +34,15 @@ $open_button = get_field( 'careers_open_button', 'option' );
 								get_template_part( 'template-parts/careers/card' );
 							} ?>
 						</div>
+						<?php
+						the_posts_pagination( array(
+							'mid_size'  => 1,
+							'prev_text' => __( 'Previous', 'aetherfield' ),
+							'next_text' => __( 'Next', 'aetherfield' ),
+						) );
+						?>
+					<?php } else { ?>
+						<p class="careers__empty"><?= esc_html__( 'No open positions right now — check back soon.', 'aetherfield' ) ?></p>
 					<?php } ?>
 
 					<?php if ( $open_title || $open_desc ) { ?>

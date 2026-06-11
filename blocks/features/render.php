@@ -12,7 +12,7 @@ $image = get_field( 'features_image' );
 $items = get_field( 'features_items' );
 $button = get_field( 'features_button' );
 ?>
-<section class="section section--features" aria-labelledby="features-title">
+<section id="features" class="section section--features" aria-labelledby="features-title">
 	<div class="section__inner">
 		<h2 id="features-title" class="h-section features__title">
 			<?= esc_html( $title ) ?>
@@ -20,7 +20,7 @@ $button = get_field( 'features_button' );
 		<div class="section__content features__content">
 			<?php if ( $image ) { ?>
 				<div class="features__image">
-					<img loading="lazy" decoding="async" src="<?= esc_url( $image['url'] ) ?>" alt="<?= esc_attr( $image['alt'] ) ?>">
+					<img loading="lazy" decoding="async"<?= aetherfield_img_dimensions( $image ) ?> src="<?= esc_url( $image['url'] ) ?>" alt="<?= esc_attr( $image['alt'] ) ?>">
 				</div>
 			<?php } ?>
 			<div class="features__list">

@@ -18,7 +18,7 @@ $blog_query = new WP_Query( array(
 	'order'          => 'DESC',
 ) );
 ?>
-<section class="section section--blog" aria-labelledby="blog-title">
+<section id="blog" class="section section--blog" aria-labelledby="blog-title">
 	<div class="section__inner">
 		<h2 id="blog-title" class="h-section blog__title"><?= esc_html( $title ) ?></h2>
 		<div class="section__content blog__body">
@@ -30,12 +30,13 @@ $blog_query = new WP_Query( array(
 					<?php while ( $blog_query->have_posts() ) {
 						$blog_query->the_post();
 
-						$hero         = get_field( 'hero_image' );
-						$thumb_id     = get_post_thumbnail_id();
+						$post_id      = get_the_ID();
+						$hero         = get_field( 'hero_image', $post_id );
+						$thumb_id     = get_post_thumbnail_id( $post_id );
 						$thumb_url    = ! empty( $hero['url'] ) ? $hero['url'] : ( $thumb_id ? wp_get_attachment_image_url( $thumb_id, 'medium' ) : '' );
 						$thumb_alt    = ! empty( $hero['alt'] ) ? $hero['alt'] : ( $thumb_id ? get_post_meta( $thumb_id, '_wp_attachment_image_alt', true ) : '' );
 						$reading_time = aetherfield_reading_time();
-						$topics       = get_the_terms( get_the_ID(), 'blog_topic' );
+						$topics       = get_the_terms( $post_id, 'blog_topic' );
 						$topic        = ( ! is_wp_error( $topics ) && ! empty( $topics ) ) ? $topics[0]->name : '';
 						?>
 						<article class="blog-item">
